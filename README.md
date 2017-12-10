@@ -1,16 +1,15 @@
-# xmr.market
+### xmr.market
 goal: enable monero purchases between individuals; be it in the form of forhires, advertisements, fiat <-> xmr exchanges, etc
 
-objectives
-
-frontend:
-*****************
+frontend objectives
+------
 redux/react integration
+
 bootstrap integration
 
 
-backend:
-*****************
+backend objectives
+------
 email proxy for support / admin functions
 
 mongodb setup
