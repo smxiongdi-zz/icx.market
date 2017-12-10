@@ -1,5 +1,5 @@
 ### xmr.market
-goal: <br>enable monero purchases between individuals; forhires, advertisements, fiat <-> xmr exchanges, etc
+enable monero purchases between individuals; forhires, advertisements, fiat <-> xmr exchanges, etc
 
 frontend objectives
 ------
