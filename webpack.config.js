@@ -34,10 +34,10 @@ var config = {
 
 var topLevelFolderConfig = Object.assign({}, config, {
     entry: {
-            App: APP_DIR + '/App.jsx',
-            AppContainer: APP_DIR + '/AppContainer.jsx',
-            index: APP_DIR + '/index.jsx',
-            configureStore: APP_DIR + '/configureStore.jsx',
+            App: APP_DIR + '/App.js',
+            AppContainer: APP_DIR + '/AppContainer.js',
+            index: APP_DIR + '/index.js',
+            configureStore: APP_DIR + '/configureStore.js',
         },
     output: {
             path: BUILD_DIR,

@@ -28,10 +28,61 @@ class App extends React.Component {
                     <div className = "preload_content">
                         <NavbarContainer />
                         <Footer />
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
+                        <div className="blah">Content in app.js</div>
 
                         <div className = "cond_content">
                             <Switch>
-                                <Route path = "/" component = { HomeContainer } />
+                                {/*}<Route path = "/" component = { HomeContainer } />*/}
                             </Switch>
                         </div>
                     </div>

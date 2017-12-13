@@ -1,18 +1,26 @@
 {
-  "name": "kuangmai",
-  "version": "0.0.0",
+  "name": "nem.direct",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0"
+    "babel-cli": "^6.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "css-loader": "^0.28.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "mongoose": "^4.13.6",
@@ -23,6 +31,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "style-loader": "^0.19.0",
     "webpack": "^3.10.0"
   }
 }

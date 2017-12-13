@@ -7,6 +7,8 @@ var app = express();
 
 var homeRouter = require('./routes/homeRouter.js');
 
+app.use(express.static('/home/zach/nem.direct/client/'));
+
 app.use('*', homeRouter);
 
 app.listen(9876, () => {

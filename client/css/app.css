@@ -1,0 +1,18 @@
+.cond_content { padding: 5%; }
+
+.row-bordered:after { content: ""; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }
+
+// .nav-link a { color: #00C5B4; }
+
+// body { background-color: #f7f7f7; }
+
+nav { border-bottom: 1px solid #9A62D6; }
+.nav-link a { color: #9A62D6; }
+.nav-link a:hover { text-decoration: none; color:#333; }
+
+
+.color-title { display: inline; }
+.t1 { color: #F6A704; }
+.t2 { color: #59B3E8; }
+.t3 { color: #00C9B4; }
+.tdot { color: black; }
