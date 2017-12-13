@@ -1,8 +1,13 @@
+var path = require('path');
+
+var bodyParser = require('body-parser');
+var session = require('express-session');
 var express = require('express');
 var app = express();
-//var bodyParser = require('body-parser');
-var path = require('path');
-// var session = require('express-session');
+
+var homeRouter = require('./routes/homeRouter.js');
+
+app.use('*', homeRouter);
 
 app.listen(9876, () => {
 	console.log('Listening on 9876', "45.76.202.20");
