@@ -25671,7 +25671,7 @@ exports = module.exports = __webpack_require__(43)(undefined);
 
 
 // module
-exports.push([module.i, ".cond_content { padding: 5%; }\n\n.row-bordered:after { content: \"\"; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }\n\n// .nav-link a { color: #00C5B4; }\n\n// body { background-color: #f7f7f7; }\n\nnav { border-bottom: 1px solid #9A62D6; }\n.nav-link a { color: #9A62D6; }\n.nav-link a:hover { text-decoration: none; color:#333; }\n\n\n.color-title { display: inline; }\n.t1 { color: #F6A704; }\n.t2 { color: #59B3E8; }\n.t3 { color: #00C9B4; }\n.tdot { color: black; }\n", ""]);
+exports.push([module.i, ".cond_content { padding: 5%; }\n\n.row-bordered:after { content: \"\"; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }\n\n// .nav-link a { color: #00C5B4; }\n\n// body { background-color: #f7f7f7; }\n\nnav { border-bottom: 1px solid #9A62D6; }\n.nav-link a { color: #9A62D6; }\n.nav-link a:hover { text-decoration: none; color:#333; }\n\n\n.color-title { display: inline; }\n.t1 { color: #F6A704; }\n.t2 { color: #59B3E8; }\n.t3 { color: #00C9B4; }\n.tdot { color: black; }\n\n.custom-toggler.navbar-toggler {\n    border-color: #9A62D6;\n}\n\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(154,98,214, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n", ""]);
 
 // exports
 
@@ -26520,7 +26520,7 @@ var Navbar = function (_React$Component) {
                     { className: 'navbar navbar-toggleable-md' },
                     _react2.default.createElement(
                         'button',
-                        { className: 'navbar-toggler navbar-toggler-right', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav', 'aria-controls': 'navbarNav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
+                        { className: 'navbar-toggler navbar-toggler-right custom-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav', 'aria-controls': 'navbarNav', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
                         _react2.default.createElement('span', { className: 'navbar-toggler-icon' })
                     ),
                     _react2.default.createElement(

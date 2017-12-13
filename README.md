@@ -1,5 +1,5 @@
-### xmr.market
-enable monero purchases between individuals; forhires, advertisements, fiat <-> xmr exchanges, etc
+### nem.direct
+enable nem purchases between individuals; forhires, advertisements, fiat <-> nem exchanges, etc
 
 frontend objectives
 ------
