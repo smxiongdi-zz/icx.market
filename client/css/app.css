@@ -1,4 +1,6 @@
 .cond_content { padding: 5%; }
+.auth-page { padding-right: 25%; padding-left: 25%; }
+.auth-button { padding-top:5%; }
 
 .row-bordered:after { content: ""; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }
 

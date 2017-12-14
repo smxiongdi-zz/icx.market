@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 // import reducers
 // import apiReducer from './redux/reducers/nemdirect';
+import reducer from './redux/reducers/reducer';
 
 const configureStore = () => {
     const middlewares = [thunk];
@@ -14,6 +15,7 @@ const configureStore = () => {
     return createStore(
         // reducers,
         // apiReducer,
+        reducer,
         applyMiddleware(...middlewares)
     );
 }

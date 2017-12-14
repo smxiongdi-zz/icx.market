@@ -7,8 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styles from './css/app.css';
 
 // import components here
-import NavbarContainer from './components/nav/NavbarContainer.js';
 import Footer from './components/nav/Footer.js';
+import NavbarContainer from './components/nav/NavbarContainer.js';
+import RegisterContainer from './components/register/RegisterContainer.js';
 
 
 class App extends React.Component {
@@ -28,61 +29,11 @@ class App extends React.Component {
                     <div className = "preload_content">
                         <NavbarContainer />
                         <Footer />
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
-                        <div className="blah">Content in app.js</div>
 
                         <div className = "cond_content">
                             <Switch>
                                 {/*}<Route path = "/" component = { HomeContainer } />*/}
+                                <Route exact path = "/register" component = { RegisterContainer } />
                             </Switch>
                         </div>
                     </div>

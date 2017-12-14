@@ -14,18 +14,18 @@ router.post('/login', ((req, res) => {
 
     var loginUser = new User({});
 
-    var hashPass = loginUser.encryptPass(req.body.pass);
+    var hashPass = loginUser.encryptPass(req.body.upass);
     var thisUser = User.find({uname: loginUser.uname}).limit(1);
 
     thisUser.then((x, err) => {
-        x.length > 0 ? bcompare() : res.send({err: 0, redirect: '/login', message: 'no user found'}), console.log('no user');
+        x.length > 0 ? bcompare() : res.send({errorMessage: "E-mail or password is incorrect"}), console.log('no user');
     });
 
     var bcompare = thisUser.then((x, err) => {
-        bcrypt.compare(req.body.pass, x[0].upass, function(err, result) {
-            req.session.uname = req.body.email;
+        bcrypt.compare(req.body.upass, x[0].upass, function(err, result) {
+            req.session.uname = req.body.uname;
             req.session.save();
-            res.send({uname: req.body.email});
+            res.send({uname: req.body.uname});
         });
     });
 
@@ -45,8 +45,12 @@ router.post('/register', ((req, res) => {
     var tempUser = require('/home/zach/nem.direct/server/models/temp_user.js');
 
     var myTempUser = new tempUser({});
-    var alreadyRegistered = tempUser.find({uname: req.body.email}).limit(1);
-    var alreadyPermanent = User.find({uname: req.body.email}).limit(1);
+    var alreadyRegistered = tempUser.find({uname: req.body.uname}).limit(1);
+    var alreadyPermanent = User.find({uname: req.body.uname}).limit(1);
+
+    console.log('obj: ' + JSON.stringify(req.body));
+    console.log('uname: ' + req.body.uname);
+    console.log('upass: ' + req.body.upass);
 
     alreadyRegistered.then((x, err) => {
         x.length > 0 ?
@@ -56,13 +60,13 @@ router.post('/register', ((req, res) => {
     });
 
     const registerUser = _ => {
-        var hashPass = myTempUser.encryptPass(req.body.pass);
+        var hashPass = myTempUser.encryptPass(req.body.upass);
         hashPass.then((hash, err) => {
-            myTempUser.name = req.body.email;
+            myTempUser.name = req.body.uname;
             myTempUser.upass = hash;
             myTempUser.conf_link = randstr.generate(10);
             myTempUser.save();
-            email_verification(req.body.email, myTempUser.conf_link);
+            email_verification(req.body.uname, myTempUser.conf_link);
             res.send({successMessage: "Successfully registered. Please check your e-mail for a confirmation link."});
         });
     }
@@ -105,3 +109,5 @@ router.post('/session', ((req, res) => {
 
     res.send({uname: req.session.uname});
 }));
+
+module.exports = router;

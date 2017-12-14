@@ -1,8 +1,7 @@
 var path = require('path');
-
+var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var express = require('express');
 var app = express();
 
 // static directory the views read from
@@ -11,6 +10,8 @@ app.use(express.static('/home/zach/nem.direct/client/'));
 // bodyParser setting
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set('trust proxy', 1);
 
 // session setting
 app.use(session({
@@ -21,8 +22,10 @@ app.use(session({
 }));
 
 // routers
+var apiRouter = require('./routes/apiRouter.js');
 var homeRouter = require('./routes/homeRouter.js');
 
+app.use('/api', apiRouter);
 app.use('*', homeRouter);
 
 app.listen(9876, () => {
