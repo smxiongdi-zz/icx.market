@@ -16,7 +16,6 @@
     "normalizr": "^3.2.4",
     "promise": "^8.0.1",
     "randomstring": "^1.1.5",
-    "randstr": "^1.0.6",
     "react-gcaptcha": "^4.2.0"
   },
   "devDependencies": {

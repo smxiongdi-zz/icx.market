@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Promise = require('promise');
-var randstr = require('randstr');
+var randstr = require('randomstring');
 var nev = require('email-verification')(require('mongoose'));
 
 const nodemailer = require('nodemailer');
@@ -62,9 +62,11 @@ router.post('/register', ((req, res) => {
     const registerUser = _ => {
         var hashPass = myTempUser.encryptPass(req.body.upass);
         hashPass.then((hash, err) => {
+            console.log('made it in here');
             myTempUser.name = req.body.uname;
             myTempUser.upass = hash;
             myTempUser.conf_link = randstr.generate(10);
+            console.log('user ' + myTempUser);
             myTempUser.save();
             email_verification(req.body.uname, myTempUser.conf_link);
             res.send({successMessage: "Successfully registered. Please check your e-mail for a confirmation link."});
@@ -80,7 +82,7 @@ router.post('/register', ((req, res) => {
             secure: true,
             auth: {
                 user: 'support@nem.direct', // store below pass in ENV
-                pass: 'this needs to be stored in an env var'
+                pass: process.env.admin_pass
             }
         });
 

@@ -28,6 +28,6 @@ var homeRouter = require('./routes/homeRouter.js');
 app.use('/api', apiRouter);
 app.use('*', homeRouter);
 
-app.listen(9876, () => {
-	console.log('Listening on 9876', "45.76.202.20");
+app.listen(process.env.PORT, () => {
+	console.log('Listening on ' + process.env.PORT, "45.76.202.20");
 });
