@@ -63,13 +63,12 @@ router.post('/register', ((req, res) => {
         var hashPass = myTempUser.encryptPass(req.body.upass);
         hashPass.then((hash, err) => {
             console.log('made it in here');
-            myTempUser.name = req.body.uname;
+            myTempUser.uname = req.body.uname;
             myTempUser.upass = hash;
             myTempUser.conf_link = randstr.generate(10);
             console.log('user ' + myTempUser);
             myTempUser.save();
             email_verification(req.body.uname, myTempUser.conf_link);
-            res.send({successMessage: "Successfully registered. Please check your e-mail for a confirmation link."});
         });
     }
 
@@ -82,7 +81,7 @@ router.post('/register', ((req, res) => {
             secure: true,
             auth: {
                 user: 'support@nem.direct', // store below pass in ENV
-                pass: process.env.admin_pass
+                pass: process.env.ADMIN_PASS
             }
         });
 
@@ -90,8 +89,8 @@ router.post('/register', ((req, res) => {
             from: 'nem.direct <support@nem.direct>',
             to: ev_email,
             subject: "Account activation", // replace with IP for the time being
-            text: "Hello, please confirm your email by going to the following link: http://nem.direct/confirm/"+ev_link,
-            text: "<b>Hello, please confirm your email by going to the following link: <br/> http://nem.direct/confirm/"+ev_link+"</b>",
+            text: "Hello, please confirm your email by going to the following link: http://" + process.env.CURR_HOST + "/confirm/"+ev_link,
+            html: "<b>Hello, please confirm your email by going to the following link: <br/> http://" + process.env.CURR_HOST + "/confirm/"+ev_link+"</b>",
 
         }
 
@@ -100,6 +99,7 @@ router.post('/register', ((req, res) => {
                 return console.log(error);
             }
             console.log('msg %s sent: %s', info.messageId, info.response);
+            res.send({successMessage: "Successfully registered. Please check your e-mail for a confirmation link."});
         });
     }
 

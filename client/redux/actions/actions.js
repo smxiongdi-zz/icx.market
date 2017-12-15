@@ -1,6 +1,6 @@
 import { normalize } from "normalizr";
 // import APIs
-import { registerUserAPI } from "../.././api/api";
+import { registerUserAPI, confirmAccountAPI } from "../.././api/api";
 // import reducers
 
 export const registerUser = (userObject) => (dispatch) => {
@@ -22,3 +22,26 @@ export const registerUser = (userObject) => (dispatch) => {
         }
     );
 }
+
+export const confirmAccount = (confUrl) => (dispatch) => {
+
+    dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+    return confirmAccountAPI(confUrl).then(
+        response => {
+            dispatch({
+                type: "CONFIRM_ACCOUNT_SUCCESS",
+                isFetching: false,
+                message: "Account validated. You may now use your credentials to log in."
+            });
+        },
+        error => {
+            dispatch({
+                type: "CONFIRM_ACCOUNT_FAILURE",
+                isFetching: false,
+                title: "404",
+                message: "Confirmation link incorrect, or account has already been validated. Try logging in if you have already registered."
+            });
+        }
+    );
+};

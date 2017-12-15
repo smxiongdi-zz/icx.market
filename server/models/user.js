@@ -4,7 +4,6 @@ var bcrypt = require('bcryptjs');
 var userSchema = mongoose.Schema({
     uname: String,
     upass: String,
-    conf_link: String
 });
 
 userSchema.methods = {

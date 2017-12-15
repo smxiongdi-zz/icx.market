@@ -58,7 +58,7 @@ class Register extends React.Component {
         return (
 
             <div className="auth-page">
-                <h2>{this.props.title}</h2>
+                <h2 className="display-4">{this.props.title}</h2>
                 <form>
                         <div className="form-group inputfield">
                             <label htmlFor="inputEmail">E-mail</label>

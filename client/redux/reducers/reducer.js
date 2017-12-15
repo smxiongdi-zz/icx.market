@@ -13,6 +13,17 @@ const apiReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 message: action.message
             })
+        case "CONFIRM_ACCOUNT_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                verifyMessage: action.message
+            })
+        case "CONFIRM_ACCOUNT_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                verifyMessage: action.message,
+                pageTitle: action.title
+            })
         default:
             return state
     }

@@ -1,0 +1,9 @@
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [server.js](ids: 0)
+[PM2] [server](0) ✓
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────┬──────────┬──────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ cpu │ mem      │ user │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────┼──────────┼──────┼──────────┤
+│ server   │ 0  │ fork │ 11631 │ online │ 376     │ 0s     │ 0%  │ 5.6 MB   │ root │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────┴──────────┴──────┴──────────┘
+ Use `pm2 show <id|name>` to get more details about an app

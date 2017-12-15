@@ -1,8 +1,8 @@
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var app = express();
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const app = express();
 
 // static directory the views read from
 app.use(express.static('/home/zach/nem.direct/client/'));
@@ -22,12 +22,14 @@ app.use(session({
 }));
 
 // routers
-var apiRouter = require('./routes/apiRouter.js');
-var homeRouter = require('./routes/homeRouter.js');
+const apiRouter = require('./routes/apiRouter.js');
+const homeRouter = require('./routes/homeRouter.js');
+const confirmAccountRouter = require('./routes/confirmAccountRouter.js');
 
 app.use('/api', apiRouter);
+app.use('', confirmAccountRouter);
 app.use('*', homeRouter);
 
 app.listen(process.env.PORT, () => {
-	console.log('Listening on ' + process.env.PORT, "45.76.202.20");
+	console.log('Listening on ' + process.env.PORT, "45.76.202.20 " + process.env.ADMIN_PASS);
 });

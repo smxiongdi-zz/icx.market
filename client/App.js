@@ -10,6 +10,7 @@ import styles from './css/app.css';
 import Footer from './components/nav/Footer.js';
 import NavbarContainer from './components/nav/NavbarContainer.js';
 import RegisterContainer from './components/register/RegisterContainer.js';
+import ConfirmContainer from './components/confirm_account/ConfirmContainer.js';
 
 
 class App extends React.Component {
@@ -34,6 +35,7 @@ class App extends React.Component {
                             <Switch>
                                 {/*}<Route path = "/" component = { HomeContainer } />*/}
                                 <Route exact path = "/register" component = { RegisterContainer } />
+                                <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                             </Switch>
                         </div>
                     </div>
