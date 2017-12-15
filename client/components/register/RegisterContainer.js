@@ -7,6 +7,8 @@ const mapStateToProps = state => {
     return({
         uname: state.uname,
         title: "Register",
+        error: state.error,
+        message: state.message,
     })
 }
 

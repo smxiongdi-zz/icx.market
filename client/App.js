@@ -27,10 +27,11 @@ class App extends React.Component {
         return (
             <div className = "NemDirectApp">
                 <Router>
-                    <div className = "preload_content">
-                        <NavbarContainer />
-                        <Footer />
-
+                    <div>
+                        <div className = "preload_content">
+                            <NavbarContainer />
+                            <Footer />
+                        </div>
                         <div className = "cond_content">
                             <Switch>
                                 {/*}<Route path = "/" component = { HomeContainer } />*/}

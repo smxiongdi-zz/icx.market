@@ -23,7 +23,7 @@ class Navbar extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className = "nav_scope">
                 <nav className="navbar navbar-toggleable-md">
                     <button className="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -36,9 +36,6 @@ class Navbar extends React.Component {
             </a>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <div className="nav-link" href="#"><NavLink exact activeClassName="active" to = '/'>Home</NavLink><span className="sr-only">(current)</span></div>
-                            </li>
                             <li className="nav-item">
                                 <div className="nav-link" href="#"><NavLink exact activeClassName="active" to = {{pathname: '/c'}} >Community</NavLink></div>
                             </li>

@@ -12,6 +12,7 @@
     "babel-cli": "^6.0.0",
     "email-verification": "^0.4.6",
     "fetch": "^1.1.0",
+    "materialize-css": "^1.0.0-alpha.2",
     "nodemailer": "^4.4.1",
     "normalizr": "^3.2.4",
     "promise": "^8.0.1",

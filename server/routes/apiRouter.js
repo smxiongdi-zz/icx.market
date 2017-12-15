@@ -54,19 +54,17 @@ router.post('/register', ((req, res) => {
 
     alreadyRegistered.then((x, err) => {
         x.length > 0 ?
-            (res.send({ errorMessage: 'Already registered' })) :
-            alreadyPermanent.then((y, err) => { y.length > 0 ? (res.send({ errorMessage: 'This email is already in use' })) :
+            (res.send({ error: 1, message: 'Already registered' })) :
+            alreadyPermanent.then((y, err) => { y.length > 0 ? (res.send({ error: 1, message: 'This email is already in use' })) :
             registerUser() });
     });
 
     const registerUser = _ => {
         var hashPass = myTempUser.encryptPass(req.body.upass);
         hashPass.then((hash, err) => {
-            console.log('made it in here');
             myTempUser.uname = req.body.uname;
             myTempUser.upass = hash;
             myTempUser.conf_link = randstr.generate(10);
-            console.log('user ' + myTempUser);
             myTempUser.save();
             email_verification(req.body.uname, myTempUser.conf_link);
         });
@@ -99,7 +97,7 @@ router.post('/register', ((req, res) => {
                 return console.log(error);
             }
             console.log('msg %s sent: %s', info.messageId, info.response);
-            res.send({successMessage: "Successfully registered. Please check your e-mail for a confirmation link."});
+            res.send({error: 0, message: "Successfully registered. Please check your e-mail for a confirmation link."});
         });
     }
 

@@ -11,13 +11,14 @@ export const registerUser = (userObject) => (dispatch) => {
         response => {
             dispatch({
                 type: "REGISTER_USER_SUCCESS",
-                message: "Verification e-mail sent"
+                error: response.error,
+                message: response.message
             });
         },
         error => {
             dispatch({
                 type: "REGISTER_USER_FAILURE",
-                message: error.message || "Registration failure"
+                message: response.message || "Registration failure"
             });
         }
     );

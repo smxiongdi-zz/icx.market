@@ -12,13 +12,12 @@ router.post("/confirm", ((req, res) => {
     var found = tempUser.find({conf_link: req.body.confUrl}).limit(1);
 
     found.then((x, err) => {
-        console.log("Hitting");
 
         myUser.uname = x[0].uname; myUser.upass = x[0].upass;
         myUser.save();
 
         tempUser.findByIdAndRemove(x[0]._id, ((err, y) => {
-            res.send({message: "Account verified"});
+            res.send({error: 0, message: "Account verified"});
         }));
 
     });

@@ -23,6 +23,10 @@ class Register extends React.Component {
 
     }
 
+    componentDidMount () {
+
+    }
+
     handleEmailChange (evt) {
         this.setState({inputEmail: evt.target.value});
     }
@@ -53,8 +57,8 @@ class Register extends React.Component {
     }
 
     render () {
-        this.props.username ? this.showTempMessage() : ''
-
+        let regMsg = <div>{this.props.message}</div>;
+        let errMsg = <div className="error-message">{this.props.message}</div>;
         return (
 
             <div className="auth-page">
@@ -79,12 +83,19 @@ class Register extends React.Component {
                 />
 
                 <div className="auth-button">
-                    <button className="btn btn-outline-success" onClick={this.handleSubmit}>Register</button>
+                    <button className="btn btn-outline-secondary" onClick={this.handleSubmit}>
+                        <div className="btn-text">
+                            Register
+                        </div>
+                    </button>
                 </div>
 
             </form>
 
-            {this.state.message}
+            { this.props.error==0 ?
+                    regMsg :
+                    errMsg
+            }
 
         </div>
 

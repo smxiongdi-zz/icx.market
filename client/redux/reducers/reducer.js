@@ -11,6 +11,7 @@ const apiReducer = (state = [], action) => {
         case "REGISTER_USER_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
+                error: action.error,
                 message: action.message
             })
         case "CONFIRM_ACCOUNT_SUCCESS":
