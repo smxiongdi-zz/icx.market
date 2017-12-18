@@ -28,6 +28,7 @@ nav { border-bottom: 1px solid #F6A704; }
     color: #F6A704;
 }
 .nav-link a:hover { text-decoration: none; color:#e3e3e3; }
+.nav-link a:active { text-decoration: none; color:#e3e3e3; }
 
 
 .color-title { display: inline; }
