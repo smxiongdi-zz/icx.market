@@ -12,6 +12,7 @@ import AboutContainer from './components/about/AboutContainer.js';
 import FeaturesContainer from './components/features/FeaturesContainer.js';
 import NavbarContainer from './components/nav/NavbarContainer.js';
 import LoginContainer from './components/account/login/LoginContainer.js';
+import LogoutContainer from './components/account/logout/LogoutContainer.js';
 import RegisterContainer from './components/account/register/RegisterContainer.js';
 import ConfirmContainer from './components/account/confirm_account/ConfirmContainer.js';
 
@@ -39,6 +40,7 @@ class App extends React.Component {
                                 <Route exact path = "/about" component = { AboutContainer } />
                                 <Route exact path = "/features" component = { FeaturesContainer } />
                                 <Route exact path = "/login" component = { LoginContainer } />
+                                <Route exact path = "/logout" component = { LogoutContainer } />
                                 <Route exact path = "/register" component = { RegisterContainer } />
                                 <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                             </Switch>

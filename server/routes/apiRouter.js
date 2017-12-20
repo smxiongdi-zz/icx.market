@@ -45,7 +45,7 @@ router.post('/login', ((req, res) => {
 // logout API endpoint
 router.post('/logout', ((req, res) => {
     req.session.destroy();
-    res.send({response: 'Logged out'});
+    res.send({message: 'Logged out'});
 }));
 
 // register API endpoint

@@ -1,7 +1,31 @@
 import { normalize } from "normalizr";
 // import APIs
-import { userSessionAPI, loginUserAPI, registerUserAPI, confirmAccountAPI } from "../.././api/api";
+import { logoutUserAPI, userSessionAPI, loginUserAPI, registerUserAPI, confirmAccountAPI } from "../.././api/api";
 // import reducers
+
+export const logoutUser = () => (dispatch) => {
+
+    dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+    return logoutUserAPI().then(
+        response => {
+            dispatch({
+                type: "LOGOUT_USER_SUCCESS",
+                isFetching: false,
+                message: response.message,
+            });
+        },
+        error => {
+            /*
+            dispatch({
+                type: "USER_LOGOUT_FAILURE",
+                isFetching: false,
+                message: "No logged-in user.",
+            });
+            */
+        }
+    );
+};
 
 export const userSession = () => (dispatch) => {
 

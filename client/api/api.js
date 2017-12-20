@@ -48,4 +48,16 @@ export const userSessionAPI = () => {
     }).then(res => res.json())
 }
 
+export const logoutUserAPI = () => {
+    const baseUrl = "/api/logout";
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        credentials: "include"
+    }).then(res => res.json())
+}
+
 

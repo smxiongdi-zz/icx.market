@@ -8,7 +8,7 @@ class Footer extends React.Component {
                 <div className="row">
                     <div className="col-md-4 footer-link"><NavLink to = {{pathname: '/about'}}>about icx.market</NavLink></div>
                     <div className="col-md-4 footer-link"><NavLink to = {{pathname: '/features'}}>upcoming features</NavLink></div>
-                    <div className="col-md-4">Questions? Contact support@icx.market</div>
+                    <div className="col-md-4">support@icx.market</div>
                 </div>
             </div>
         )

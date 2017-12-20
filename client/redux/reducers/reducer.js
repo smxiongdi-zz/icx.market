@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({ account:accountReducer });
 
-const apiReducer = (state = [], action) => {
+const accountReducer = (state = [], action) => {
     switch(action.type) {
         case "NETWORK_REQUEST":
             return Object.assign({}, state, {
@@ -32,6 +32,12 @@ const apiReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 verifyMessage: action.message
             })
+        case "LOGOUT_USER_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                uname: '',
+                message: "Logged out"
+            })
         case "LOGIN_USER_FAILURE":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
@@ -55,4 +61,4 @@ const apiReducer = (state = [], action) => {
     }
 }
 
-export default rootReducer;
+export default accountReducer;

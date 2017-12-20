@@ -1,6 +1,7 @@
 $font-stack: Bungee Hairline, cursive;
 $primary: #1FC4C8;
 $secondary: #F3308C;
+$gw: ghostwhite;
 $bg: #E8E9E9;
 $navbg: #181A1B;
 
@@ -62,7 +63,9 @@ body::after {
 
 .ptext {
     font-weight:bold;
-    background-color: #f0f0f0;
+//    background-color: #f0f0f0;
+    background-color: $navbg;
+    color: $gw;
     border-radius:25px;
     height:auto;
     width: 80%;
@@ -74,11 +77,16 @@ body::after {
 
 .auth-page {
     font-weight:bold;
-    background-color: #f0f0f0;
+    background-color: $navbg;
+    color: $gw;
     border-radius:25px;
     height:auto;
     width: 80%;
     padding:2%;
+}
+
+.smtext {
+    color: $gw;
 }
 
 .footer {
@@ -105,15 +113,15 @@ body::after {
 .auth-page { padding-right: 25%; padding-left: 25%; }
 
 .btn-text {
-    color: black;
-    background-color: $primary;
+    color: $primary;
+    background-color: $navbg;
     font-family: $font-stack;
 }
 
 .error-message { color: $secondary; }
 .success-message { color: $primary; }
 .footer-link a { color: $primary }
-.footer-link a:hover { color: ghostwhite; text-decoration: none; }
+.footer-link a:hover { color: $gw; text-decoration: none; }
 
 .nav_scope {
 //    background-color: $navbg;

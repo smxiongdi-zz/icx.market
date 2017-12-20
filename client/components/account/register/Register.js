@@ -53,7 +53,7 @@ class Register extends React.Component {
     }
 
     redirectPage () {
-        setTimeout(() => this.props.history.push('/', 1000));
+        setTimeout(() => this.props.history.push('/', 5000));
     }
 
     render () {
@@ -68,13 +68,17 @@ class Register extends React.Component {
                         <div className="form-group inputfield">
                             <label htmlFor="inputEmail">E-mail</label>
                             <input type="email" className="form-control" id="inputEmail" onChange={this.handleEmailChange} value={this.state.inputEmail}/>
-                            <small id="emailHelp" className="form-text text-muted">Your e-mail is kept private. We don't sell your information.</small>
+                            <small id="emailHelp" className="form-text text-muted">
+                                <div className="smtxt">Your e-mail is kept private. We don't sell your information.</div>
+                            </small>
                         </div>
 
                         <div className="form-group inputfield">
                             <label htmlFor="inputPass">Password</label>
                             <input type="password" className="form-control" id="inputPass" onChange={this.handlePassChange} value={this.state.inputPass}/>
-                            <small id="passHelp" className="form-text text-muted">Don't worry. We aren't storing your password in plaintext.</small>
+                            <small id="passHelp" className="form-text text-muted">
+                                <div className="smtxt">Don't worry. We aren't storing your password in plaintext.</div>
+                            </small>
                         </div>
 
                 <Recaptcha

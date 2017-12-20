@@ -53,7 +53,8 @@ body::after {
 
 .ptext {
   font-weight: bold;
-  background-color: #f0f0f0;
+  background-color: #181A1B;
+  color: ghostwhite;
   border-radius: 25px;
   height: auto;
   width: 80%;
@@ -64,11 +65,15 @@ body::after {
 
 .auth-page {
   font-weight: bold;
-  background-color: #f0f0f0;
+  background-color: #181A1B;
+  color: ghostwhite;
   border-radius: 25px;
   height: auto;
   width: 80%;
   padding: 2%; }
+
+.smtext {
+  color: ghostwhite; }
 
 .footer {
   position: absolute;
@@ -94,8 +99,8 @@ body::after {
   padding-left: 25%; }
 
 .btn-text {
-  color: black;
-  background-color: #1FC4C8;
+  color: #1FC4C8;
+  background-color: #181A1B;
   font-family: Bungee Hairline, cursive; }
 
 .error-message {
