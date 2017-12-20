@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
+const MongoStore = require('connect-mongo')(session);
 
 // static directory the views read from
 app.use(express.static('/home/zach/icx.market/client/'));
@@ -15,7 +16,8 @@ app.set('trust proxy', 1);
 
 // session setting
 app.use(session({
-    secret: 'xxxx',
+    store: new MongoStore({url: 'mongodb://localhost/session'}),
+    secret: 'xxx$xxx9xx5',
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false, HttpOnly: false },
