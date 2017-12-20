@@ -12,7 +12,7 @@ export const userSession = () => (dispatch) => {
             dispatch({
                 type: "USER_SESSION_SUCCESS",
                 isFetching: false,
-                message: "User authenticated",
+                message: response.message,
                 uname: response.uname,
             });
         },

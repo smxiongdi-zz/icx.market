@@ -11,13 +11,15 @@ const nodemailer = require('nodemailer');
 router.post('/session', ((req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-    res.send({uname: req.session.uname});
+    req.session.uname ?
+        res.send({error: 0, uname:req.session.uname, message: "User authenticated"}) :
+        res.send({error: 1, message:"User not logged in"});
 }));
 
 // login API endpoint
 router.post('/login', ((req, res) => {
-    var db = require('/home/zach/nem.direct/server/db/accounts_connec.js');
-    var User = require('/home/zach/nem.direct/server/models/user.js');
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
+    var User = require('/home/zach/icx.market/server/models/user.js');
 
     var loginUser = new User({});
 
@@ -48,10 +50,10 @@ router.post('/logout', ((req, res) => {
 
 // register API endpoint
 router.post('/register', ((req, res) => {
-    var db = require('/home/zach/nem.direct/server/db/accounts_connec.js');
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
 
-    var User = require('/home/zach/nem.direct/server/models/user.js');
-    var tempUser = require('/home/zach/nem.direct/server/models/temp_user.js');
+    var User = require('/home/zach/icx.market/server/models/user.js');
+    var tempUser = require('/home/zach/icx.market/server/models/temp_user.js');
 
     var myTempUser = new tempUser({});
     var alreadyRegistered = tempUser.find({uname: req.body.uname}).limit(1);
@@ -87,13 +89,13 @@ router.post('/register', ((req, res) => {
             port: 465,
             secure: true,
             auth: {
-                user: 'support@nem.direct', // store below pass in ENV
+                user: process.env.NOREPLY, // store below pass in ENV
                 pass: process.env.ADMIN_PASS
             }
         });
 
         let mailOptions = {
-            from: 'nem.direct <support@nem.direct>',
+            from: 'ICX.Market Support Team <support@icx.market>',
             to: ev_email,
             subject: "Account activation", // replace with IP for the time being
             text: "Hello, please confirm your email by going to the following link: http://" + process.env.CURR_HOST + "/confirm/"+ev_link,

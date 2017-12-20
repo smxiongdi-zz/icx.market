@@ -3,9 +3,9 @@ var express = require("express");
 var router = express.Router();
 
 router.post("/confirm", ((req, res) => {
-    var db = require("/home/zach/nem.direct/server/db/accounts_connec.js");
-    var User = require("/home/zach/nem.direct/server/models/user.js");
-    var tempUser = require("/home/zach/nem.direct/server/models/temp_user.js");
+    var db = require("/home/zach/icx.market/server/db/accounts_connec.js");
+    var User = require("/home/zach/icx.market/server/models/user.js");
+    var tempUser = require("/home/zach/icx.market/server/models/temp_user.js");
 
     var myUser = new User({});
 

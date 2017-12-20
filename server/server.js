@@ -5,7 +5,7 @@ const session = require('express-session');
 const app = express();
 
 // static directory the views read from
-app.use(express.static('/home/zach/nem.direct/client/'));
+app.use(express.static('/home/zach/icx.market/client/'));
 
 // bodyParser setting
 app.use(bodyParser.json());
@@ -31,5 +31,5 @@ app.use('', confirmAccountRouter);
 app.use('*', homeRouter);
 
 app.listen(process.env.PORT, () => {
-	console.log('Listening on ' + process.env.PORT, "45.76.202.20 " + process.env.ADMIN_PASS);
+	console.log('Listening on ' + process.env.PORT, "45.76.202.20 " + process.env.ADMIN_PASS, process.env.NOREPLY);
 });

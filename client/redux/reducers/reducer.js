@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const ndApp = combineReducers({ });
+const rootReducer = combineReducers({ account:accountReducer });
 
 const apiReducer = (state = [], action) => {
     switch(action.type) {
@@ -55,4 +55,4 @@ const apiReducer = (state = [], action) => {
     }
 }
 
-export default apiReducer;
+export default rootReducer;

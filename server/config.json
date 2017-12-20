@@ -2,11 +2,12 @@
     "name"  :"devConfig",
     "script":"./server.js",
     "args"  :[""],
-    "cwd"   :"/home/zach/nem.direct/server/",
+    "cwd"   :"/home/zach/icx.market/server/",
     "env" : {
         "NODE_ENV"  :"dev",
         "PORT"      :9876,
         "CURR_HOST" :process.env.CURR_HOST,
         "ADMIN_PASS":process.env.ADMIN_PASS,
+        "NOREPLY"   :process.env.NOREPLY,
     }
 }]
