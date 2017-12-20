@@ -1,0 +1,112 @@
+.cond_content {
+    height: 100%;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    background-color: #E8E9E9;
+
+    font-family: "Bungee Hairline", cursive;
+}
+
+.auth-page { padding-right: 25%; padding-left: 25%; }
+.auth-button { padding-top:5%; }
+.btn-text { background-color: #1FC4C8; color: black; font-family: "Bungee Hairline", cursive; }
+
+.error-message { color: #f3308c; }
+.success-message { color: #1fc4c8; }
+.footer-link a { color: #1FC4C8; }
+.footer-link a:hover { color: ghostwhite; text-decoration: none; }
+
+.nav_scope {
+    background-color: #181A1B;
+    font-family: "Bungee Hairline", cursive;
+}
+
+.row-bordered:after { content: ""; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }
+
+// .nav-link a { color: #00C5B4; }
+
+// body { background-color: #f7f7f7; }
+
+nav { border-bottom: 1px solid #1FC4C8; }
+.nav-link a {
+    color: #1FC4C8;
+    font-size:15px;
+}
+.nav-link a:hover { text-decoration: none; color:#e3e3e3; }
+.nav-link a:active { text-decoration: none; color:#e3e3e3; }
+
+
+.color-title {
+    display: inline;
+    font-family: "Bungee Hairline", cursive;
+    color: #1FC4C8;
+}
+
+.t1 { color: #F6A704; }
+.t2 { color: #59B3E8; }
+.t3 { color: #00C9B4; }
+.tdot { color: white; }
+
+.custom-toggler.navbar-toggler {
+    //border-color: #9A62D6;
+    border-color: #1FC4C8;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(31,196,200, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/**
+ * Demo Styles
+ */
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+//  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.demo {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
+.demo h1 {
+  margin-top: 0;
+}
+
+
+/**
+ * Footer Styles
+  */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+//  background-color: #F3308C;
+  background-color: #181A1B;
+  font-family: "Bungee Hairline", cursive;
+  text-align: center;
+  color: #1FC4C8;
+  border-top: 1px solid #29292C;
+}
+

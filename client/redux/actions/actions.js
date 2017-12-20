@@ -1,7 +1,53 @@
 import { normalize } from "normalizr";
 // import APIs
-import { registerUserAPI, confirmAccountAPI } from "../.././api/api";
+import { userSessionAPI, loginUserAPI, registerUserAPI, confirmAccountAPI } from "../.././api/api";
 // import reducers
+
+export const userSession = () => (dispatch) => {
+
+    dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+    return userSessionAPI().then(
+        response => {
+            dispatch({
+                type: "USER_SESSION_SUCCESS",
+                isFetching: false,
+                message: "User authenticated",
+                uname: response.uname,
+            });
+        },
+        error => {
+            dispatch({
+                type: "USER_SESSION_FAILURE",
+                isFetching: false,
+                message: "No logged-in user.",
+            });
+        }
+    );
+};
+
+export const loginUser = (userObject) => (dispatch) => {
+
+    dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+    return loginUserAPI(userObject).then(
+        response => {
+            dispatch({
+                type: "LOGIN_USER_SUCCESS",
+                isFetching: false,
+                uname: response.uname,
+                message: response.message || "Successfully logged in"
+            });
+        },
+        error => {
+            dispatch({
+                type: "LOGIN_USER_FAILURE",
+                isFetching: false,
+                message: "User credentials incorrect",
+            });
+        }
+    );
+};
 
 export const registerUser = (userObject) => (dispatch) => {
     dispatch({ type: "NETWORK_REQUEST", isFetching: true });
@@ -18,6 +64,8 @@ export const registerUser = (userObject) => (dispatch) => {
         error => {
             dispatch({
                 type: "REGISTER_USER_FAILURE",
+                isFetching: false,
+                error: response.error,
                 message: response.message || "Registration failure"
             });
         }

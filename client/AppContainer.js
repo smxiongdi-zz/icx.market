@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { userSession } from './redux/actions/actions';
 
 import App from './App.js';
 
@@ -13,6 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         dispatch,
+        fetchSession: () => dispatch(userSession()),
     })
 }
 

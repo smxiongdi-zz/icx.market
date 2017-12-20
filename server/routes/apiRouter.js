@@ -7,25 +7,34 @@ var nev = require('email-verification')(require('mongoose'));
 
 const nodemailer = require('nodemailer');
 
+// session api endpoint
+router.post('/session', ((req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+    res.send({uname: req.session.uname});
+}));
+
 // login API endpoint
 router.post('/login', ((req, res) => {
     var db = require('/home/zach/nem.direct/server/db/accounts_connec.js');
-    var User = require('home/zach/nem.direct/server/models/user.js');
+    var User = require('/home/zach/nem.direct/server/models/user.js');
 
     var loginUser = new User({});
 
     var hashPass = loginUser.encryptPass(req.body.upass);
-    var thisUser = User.find({uname: loginUser.uname}).limit(1);
+    var thisUser = User.find({uname: req.body.uname}).limit(1);
+    console.log("I'm here");
 
     thisUser.then((x, err) => {
-        x.length > 0 ? bcompare() : res.send({errorMessage: "E-mail or password is incorrect"}), console.log('no user');
+        x.length > 0 ? bcompare() : res.send({error: 1, message: "E-mail or password is incorrect"});
     });
 
     var bcompare = thisUser.then((x, err) => {
+        console.log(x);
         bcrypt.compare(req.body.upass, x[0].upass, function(err, result) {
             req.session.uname = req.body.uname;
             req.session.save();
-            res.send({uname: req.body.uname});
+            res.send({uname: req.body.uname, error: 0, message: "Successfully logged in"});
         });
     });
 
@@ -101,13 +110,6 @@ router.post('/register', ((req, res) => {
         });
     }
 
-}));
-
-// session api endpoint
-router.post('/session', ((req, res) => {
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-
-    res.send({uname: req.session.uname});
 }));
 
 module.exports = router;

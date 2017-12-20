@@ -1,3 +1,16 @@
+export const loginUserAPI = (userObject) => {
+    const baseUrl = "/api/login";
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(userObject)
+    }).then(res => res.json())
+}
+
 export const registerUserAPI = (userObject) => {
     const baseUrl = "/api/register";
     return fetch(baseUrl, {
@@ -11,14 +24,28 @@ export const registerUserAPI = (userObject) => {
 }
 
 export const confirmAccountAPI = (confUrl) => {
-    const baseUrl = '/confirm';
+    const baseUrl = "/confirm";
     return fetch(baseUrl, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            "Accept": "application/json",
+            "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify(confUrl)
     }).then(res => res.json())
 }
+
+export const userSessionAPI = () => {
+    const baseUrl = "/api/session";
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        credentials: "include"
+    }).then(res => res.json())
+}
+
+

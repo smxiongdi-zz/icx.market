@@ -4,11 +4,12 @@ import ReactDom from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // import styles here, put static files here later
-import styles from './css/app.css';
+import styles from './static/css/app.css';
 
 // import components here
 import Footer from './components/nav/Footer.js';
 import NavbarContainer from './components/nav/NavbarContainer.js';
+import LoginContainer from './components/login/LoginContainer.js';
 import RegisterContainer from './components/register/RegisterContainer.js';
 import ConfirmContainer from './components/confirm_account/ConfirmContainer.js';
 
@@ -21,6 +22,7 @@ class App extends React.Component {
 
     componentDidMount() {
         // onload actions
+        this.props.fetchSession();
     }
 
     render() {
@@ -35,6 +37,7 @@ class App extends React.Component {
                         <div className = "cond_content">
                             <Switch>
                                 {/*}<Route path = "/" component = { HomeContainer } />*/}
+                                <Route exact path = "/login" component = { LoginContainer } />
                                 <Route exact path = "/register" component = { RegisterContainer } />
                                 <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                             </Switch>

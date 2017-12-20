@@ -4,7 +4,7 @@ import Navbar from './Navbar.js';
 
 const mapStateToProps = state => {
     return ({
-        username: state.username,
+        uname: state.uname,
     })
 }
 

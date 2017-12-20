@@ -1,9 +1,9 @@
 import React from 'react';
 import Recaptcha from 'react-gcaptcha';
 
-import { registerUser } from '../.././redux/actions/actions';
+import { loginUser } from '../.././redux/actions/actions';
 
-class Register extends React.Component {
+class Login extends React.Component {
 
     constructor() {
         super();
@@ -44,7 +44,7 @@ class Register extends React.Component {
 
         if(this.state.inputEmail && this.state.inputPass.length >=4) {
             const newUser = {uname: this.state.inputEmail, upass: this.state.inputPass};
-            this.state.captcha ? this.props.dispatch(registerUser(newUser)) : '';
+            this.state.captcha ? this.props.dispatch(loginUser(newUser)) : '';
             this.setState({captcha: false});
             // should redirect
         } else if(!this.state.inputEmail) {
@@ -60,21 +60,18 @@ class Register extends React.Component {
         let regMsg = <div>{this.props.message}</div>;
         let errMsg = <div className="error-message">{this.props.message}</div>;
         return (
-
             <div className="auth-page">
-                { this.props.uname ? this.redirectPage : '' }
+            { this.props.uname ? this.redirectPage : '' }
                 <h2 className="display-4">{this.props.title}</h2>
                 <form>
                         <div className="form-group inputfield">
                             <label htmlFor="inputEmail">E-mail</label>
                             <input type="email" className="form-control" id="inputEmail" onChange={this.handleEmailChange} value={this.state.inputEmail}/>
-                            <small id="emailHelp" className="form-text text-muted">Your e-mail is kept private. We don't sell your information.</small>
                         </div>
 
                         <div className="form-group inputfield">
                             <label htmlFor="inputPass">Password</label>
                             <input type="password" className="form-control" id="inputPass" onChange={this.handlePassChange} value={this.state.inputPass}/>
-                            <small id="passHelp" className="form-text text-muted">Don't worry. We aren't storing your password in plaintext.</small>
                         </div>
 
                 <Recaptcha
@@ -85,7 +82,7 @@ class Register extends React.Component {
 
                 <div className="auth-button">
                     <button className="btn btn-outline-secondary btn-text" onClick={this.handleSubmit}>
-                        Register
+                       Log in
                     </button>
                 </div>
 
@@ -102,4 +99,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default Login;

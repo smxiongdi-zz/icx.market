@@ -8,6 +8,19 @@ const apiReducer = (state = [], action) => {
             return Object.assign({}, state, {
                 isFetching: action.isFetching
             })
+        case "USER_SESSION_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                uname: action.uname,
+                message: action.message,
+            })
+        case "LOGIN_USER_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                error: action.error,
+                message: action.message,
+                uname: action.uname
+            })
         case "REGISTER_USER_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
@@ -18,6 +31,18 @@ const apiReducer = (state = [], action) => {
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
                 verifyMessage: action.message
+            })
+        case "LOGIN_USER_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                error: action.error,
+                message: action.message,
+            })
+        case "REGISTER_USER_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                error: action.error,
+                message: action.message,
             })
         case "CONFIRM_ACCOUNT_FAILURE":
             return Object.assign({}, state, {
