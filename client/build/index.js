@@ -501,7 +501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.confirmAccount = exports.registerUser = exports.loginUser = exports.userSession = exports.logoutUser = undefined;
+exports.confirmAccount = exports.registerUser = exports.loginUser = exports.userSession = exports.logoutUser = exports.siteVerify = undefined;
 
 var _normalizr = __webpack_require__(129);
 
@@ -509,6 +509,30 @@ var _api = __webpack_require__(135);
 
 // import reducers
 
+var siteVerify = exports.siteVerify = function siteVerify(recaptcha) {
+    return function (dispatch) {
+
+        dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+        return (0, _api.siteVerifyInfoAPI)(recaptcha).then(function (response) {
+            dispatch({
+                type: "SITEVERIFY_SUCCESS",
+                isFetching: false,
+                message: response.message,
+                error: response.error,
+                recap: response.recap
+            });
+        }, function (error) {
+            dispatch({
+                type: "SITEVERIFY_FAILURE",
+                isFetching: false,
+                message: "Recaptcha API failed",
+                recap: 0
+            });
+        });
+    };
+};
+// import APIs
 var logoutUser = exports.logoutUser = function logoutUser() {
     return function (dispatch) {
 
@@ -531,7 +555,7 @@ var logoutUser = exports.logoutUser = function logoutUser() {
         });
     };
 };
-// import APIs
+
 var userSession = exports.userSession = function userSession() {
     return function (dispatch) {
 
@@ -27085,7 +27109,8 @@ var mapStateToProps = function mapStateToProps(state) {
         uname: state.uname,
         title: "Login",
         error: state.error,
-        message: state.message
+        message: state.message,
+        recap: state.recap
     };
 };
 
@@ -27785,6 +27810,21 @@ var logoutUserAPI = exports.logoutUserAPI = function logoutUserAPI() {
     });
 };
 
+var siteVerifyInfoAPI = exports.siteVerifyInfoAPI = function siteVerifyInfoAPI(info) {
+    var baseUrl = "/api/siteverify";
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(info)
+    }).then(function (res) {
+        return res.json();
+    });
+};
+
 /***/ }),
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -27855,8 +27895,8 @@ var Login = function (_React$Component) {
         }
     }, {
         key: 'handleRecaptcha',
-        value: function handleRecaptcha(key) {
-            this.setState({ captcha: true });
+        value: function handleRecaptcha(recaptcha) {
+            this.props.dispatch((0, _actions.siteVerify)({ recaptcha: recaptcha }));
         }
     }, {
         key: 'handleSubmit',
@@ -27865,8 +27905,7 @@ var Login = function (_React$Component) {
 
             if (this.state.inputEmail && this.state.inputPass.length >= 4) {
                 var newUser = { uname: this.state.inputEmail, upass: this.state.inputPass };
-                this.state.captcha ? this.props.dispatch((0, _actions.loginUser)(newUser)) : '';
-                this.setState({ captcha: false });
+                this.props.recap ? this.props.dispatch((0, _actions.loginUser)(newUser)) : '';
                 // should redirect
             } else if (!this.state.inputEmail) {
                 this.setState({ message: 'Please enter e-mail' });
@@ -27931,7 +27970,7 @@ var Login = function (_React$Component) {
                     _react2.default.createElement(_reactGcaptcha2.default, {
                         sitekey: '6LeGAD0UAAAAAHxEorgSZxhlgHAeAOL2AWFJNn4c',
                         verifyCallback: this.handleRecaptcha,
-                        theme: 'light'
+                        theme: 'dark'
                     }),
                     _react2.default.createElement(
                         'div',
@@ -28189,8 +28228,8 @@ var Register = function (_React$Component) {
         }
     }, {
         key: 'handleRecaptcha',
-        value: function handleRecaptcha(key) {
-            this.setState({ captcha: true });
+        value: function handleRecaptcha(recaptcha) {
+            this.props.dispatch((0, _actions.siteVerify)({ recaptcha: recaptcha }));
         }
     }, {
         key: 'handleSubmit',
@@ -28199,8 +28238,7 @@ var Register = function (_React$Component) {
 
             if (this.state.inputEmail && this.state.inputPass.length >= 4) {
                 var newUser = { uname: this.state.inputEmail, upass: this.state.inputPass };
-                this.state.captcha ? this.props.dispatch((0, _actions.registerUser)(newUser)) : '';
-                this.setState({ captcha: false });
+                this.props.recap ? this.props.dispatch((0, _actions.registerUser)(newUser)) : '';
                 // should redirect
             } else if (!this.state.inputEmail) {
                 this.setState({ message: 'Please enter e-mail' });
@@ -28283,7 +28321,7 @@ var Register = function (_React$Component) {
                     _react2.default.createElement(_reactGcaptcha2.default, {
                         sitekey: '6LeGAD0UAAAAAHxEorgSZxhlgHAeAOL2AWFJNn4c',
                         verifyCallback: this.handleRecaptcha,
-                        theme: 'light'
+                        theme: 'dark'
                     }),
                     _react2.default.createElement(
                         'div',
@@ -28566,13 +28604,15 @@ var accountReducer = function accountReducer() {
                 isFetching: action.isFetching,
                 error: action.error,
                 message: action.message,
-                uname: action.uname
+                uname: action.uname,
+                recap: 0
             });
         case "REGISTER_USER_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
                 error: action.error,
-                message: action.message
+                message: action.message,
+                recap: 0
             });
         case "CONFIRM_ACCOUNT_SUCCESS":
             return Object.assign({}, state, {
@@ -28584,6 +28624,13 @@ var accountReducer = function accountReducer() {
                 isFetching: action.isFetching,
                 uname: '',
                 message: "Logged out"
+            });
+        case "SITEVERIFY_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
+                recap: action.recap
             });
         case "LOGIN_USER_FAILURE":
             return Object.assign({}, state, {
@@ -28602,6 +28649,13 @@ var accountReducer = function accountReducer() {
                 isFetching: action.isFetching,
                 verifyMessage: action.message,
                 pageTitle: action.title
+            });
+        case "SITEVERIFY_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
+                recap: action.recap
             });
         default:
             return state;

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+
+var request = require('request');
 var bcrypt = require('bcryptjs');
 var Promise = require('promise');
 var randstr = require('randomstring');
@@ -111,6 +113,21 @@ router.post('/register', ((req, res) => {
             res.send({error: 0, message: "Successfully registered. Please check your e-mail for a confirmation link."});
         });
     }
+
+}));
+
+router.post('/siteverify', ((req, res) => {
+
+    var captchaURL = "https://www.google.com/recaptcha/api/siteverify?secret="+process.env.CAPTCHA_SECRET+"&response="+req.body.recaptcha+"&remoteip="+req.connection.remoteAddress;
+
+    request(captchaURL, (error, response, body) => {
+        body = JSON.parse(body);
+
+        if(body.success !== undefined && !body.success) {
+            res.send({error:1, recap:0, message:"Not validated"});
+        }
+        res.send({error:0, recap:1, message: "Validated"});
+    });
 
 }));
 

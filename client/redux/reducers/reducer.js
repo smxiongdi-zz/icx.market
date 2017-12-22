@@ -19,13 +19,15 @@ const accountReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 error: action.error,
                 message: action.message,
-                uname: action.uname
+                uname: action.uname,
+                recap: 0,
             })
         case "REGISTER_USER_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
                 error: action.error,
-                message: action.message
+                message: action.message,
+                recap: 0,
             })
         case "CONFIRM_ACCOUNT_SUCCESS":
             return Object.assign({}, state, {
@@ -37,6 +39,13 @@ const accountReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 uname: '',
                 message: "Logged out"
+            })
+        case "SITEVERIFY_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
+                recap: action.recap,
             })
         case "LOGIN_USER_FAILURE":
             return Object.assign({}, state, {
@@ -55,6 +64,13 @@ const accountReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 verifyMessage: action.message,
                 pageTitle: action.title
+            })
+        case "SITEVERIFY_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
+                recap: action.recap,
             })
         default:
             return state

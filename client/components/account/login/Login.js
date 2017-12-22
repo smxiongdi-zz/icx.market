@@ -1,7 +1,7 @@
 import React from 'react';
 import Recaptcha from 'react-gcaptcha';
 
-import { loginUser } from '../../.././redux/actions/actions';
+import { loginUser, siteVerify } from '../../.././redux/actions/actions';
 
 class Login extends React.Component {
 
@@ -24,7 +24,6 @@ class Login extends React.Component {
     }
 
     componentDidMount () {
-
     }
 
     handleEmailChange (evt) {
@@ -35,8 +34,8 @@ class Login extends React.Component {
         this.setState({inputPass: evt.target.value});
     }
 
-    handleRecaptcha (key) {
-        this.setState({captcha: true});
+    handleRecaptcha (recaptcha) {
+        this.props.dispatch(siteVerify({recaptcha: recaptcha}));
     }
 
     handleSubmit (evt) {
@@ -44,8 +43,7 @@ class Login extends React.Component {
 
         if(this.state.inputEmail && this.state.inputPass.length >=4) {
             const newUser = {uname: this.state.inputEmail, upass: this.state.inputPass};
-            this.state.captcha ? this.props.dispatch(loginUser(newUser)) : '';
-            this.setState({captcha: false});
+            this.props.recap ? this.props.dispatch(loginUser(newUser)) : '';
             // should redirect
         } else if(!this.state.inputEmail) {
             this.setState({message: 'Please enter e-mail'});
@@ -77,7 +75,7 @@ class Login extends React.Component {
                 <Recaptcha
                     sitekey="6LeGAD0UAAAAAHxEorgSZxhlgHAeAOL2AWFJNn4c"
                     verifyCallback={this.handleRecaptcha}
-                    theme="light"
+                    theme="dark"
                 />
 
                 <div className="auth-button">

@@ -12,6 +12,7 @@
     "babel-cli": "^6.0.0",
     "connect-mongo": "^2.0.0",
     "email-verification": "^0.4.6",
+    "express-recaptcha": "^3.0.0",
     "fetch": "^1.1.0",
     "materialize-css": "^1.0.0-alpha.2",
     "nodemailer": "^4.4.1",
@@ -19,6 +20,7 @@
     "promise": "^8.0.1",
     "randomstring": "^1.1.5",
     "react-gcaptcha": "^4.2.0",
+    "request": "^2.83.0",
     "session-mongoose": "^0.5.2"
   },
   "devDependencies": {

@@ -60,4 +60,15 @@ export const logoutUserAPI = () => {
     }).then(res => res.json())
 }
 
-
+export const siteVerifyInfoAPI = (info) => {
+    const baseUrl = "/api/siteverify";
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(info)
+    }).then(res => res.json())
+}

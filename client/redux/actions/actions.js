@@ -1,7 +1,32 @@
 import { normalize } from "normalizr";
 // import APIs
-import { logoutUserAPI, userSessionAPI, loginUserAPI, registerUserAPI, confirmAccountAPI } from "../.././api/api";
+import { siteVerifyInfoAPI, logoutUserAPI, userSessionAPI, loginUserAPI, registerUserAPI, confirmAccountAPI } from "../.././api/api";
 // import reducers
+
+export const siteVerify = (recaptcha) => (dispatch) => {
+
+    dispatch({ type: "NETWORK_REQUEST", isFetching: true });
+
+    return siteVerifyInfoAPI(recaptcha).then(
+        response => {
+            dispatch({
+                type: "SITEVERIFY_SUCCESS",
+                isFetching: false,
+                message: response.message,
+                error: response.error,
+                recap: response.recap,
+            });
+        },
+        error => {
+            dispatch({
+                type: "SITEVERIFY_FAILURE",
+                isFetching: false,
+                message: "Recaptcha API failed",
+                recap: 0,
+            });
+        }
+    );
+}
 
 export const logoutUser = () => (dispatch) => {
 
