@@ -9,13 +9,20 @@ var nev = require('email-verification')(require('mongoose'));
 
 const nodemailer = require('nodemailer');
 
+// theme api endpoint
+router.post('/theme', ((req, res) => {
+    req.session.theme = req.body.theme;
+    req.session.save();
+    res.send({message:"Theme saved"});
+}));
+
 // session api endpoint
 router.post('/session', ((req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     req.session.uname ?
-        res.send({error: 0, uname:req.session.uname, message: "User authenticated"}) :
-        res.send({error: 1, message:"User not logged in"});
+        res.send({error: 0, uname:req.session.uname, message: "User authenticated", theme: req.session.theme}) :
+        res.send({error: 1, message:"User not logged in", theme: req.session.theme});
 }));
 
 // login API endpoint

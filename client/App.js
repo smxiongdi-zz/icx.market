@@ -1,16 +1,17 @@
 // import libraries
 import React from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 // import styles here, put static files here later
-import styles from './static/css/app.css';
+//import styles from './static/css/app.css';
 
 // import components here
-import Footer from './components/nav/Footer.js';
+import NavbarContainer from './components/nav/NavbarContainer.js';
+import Footer from './components/footer/FooterContainer.js';
+import DashContainer from './components/dash/DashContainer.js';
 import AboutContainer from './components/about/AboutContainer.js';
 import FeaturesContainer from './components/features/FeaturesContainer.js';
-import NavbarContainer from './components/nav/NavbarContainer.js';
 import LoginContainer from './components/account/login/LoginContainer.js';
 import LogoutContainer from './components/account/logout/LogoutContainer.js';
 import RegisterContainer from './components/account/register/RegisterContainer.js';
@@ -25,8 +26,16 @@ class App extends React.Component {
 
     componentDidMount() {
         // onload actions
-        this.props.fetchSession();
+        this.props.fetchSession().then(() => {
+            if(this.props.theme === 'Light') {
+                require('./static/css/light.css');
+            } else if(this.props.theme === 'Dark') {
+                require('./static/css/dark.css');
+            }
+        });
     }
+
+    componentWillMount() {}
 
     render() {
         return (
@@ -34,9 +43,11 @@ class App extends React.Component {
                 <Router>
                     <div>
                         <NavbarContainer />
+                        <div className = "wrapper">
                         <div className = "cond_content">
                             <Switch>
-                                {/*}<Route path = "/" component = { HomeContainer } />*/}
+                                <Route exact path = "/" component = { DashContainer } />
+                                <Route exact path = "/dash" component = { DashContainer } />
                                 <Route exact path = "/about" component = { AboutContainer } />
                                 <Route exact path = "/features" component = { FeaturesContainer } />
                                 <Route exact path = "/login" component = { LoginContainer } />
@@ -44,6 +55,7 @@ class App extends React.Component {
                                 <Route exact path = "/register" component = { RegisterContainer } />
                                 <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                             </Switch>
+                        </div>
                         </div>
                         <Footer />
                     </div>

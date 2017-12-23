@@ -1,0 +1,5 @@
+scss:
+sass x.scss output.css
+
+less:
+lessc x.less output.css

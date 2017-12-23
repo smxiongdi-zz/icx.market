@@ -61,21 +61,21 @@ class Register extends React.Component {
 
             <div className="auth-page">
                 { this.props.uname ? this.redirectPage : '' }
-                <h2 className="display-4">{this.props.title}</h2>
+                <h4>{this.props.title}</h4>
                 <form>
                         <div className="form-group inputfield">
                             <label htmlFor="inputEmail">E-mail</label>
                             <input type="email" className="form-control" id="inputEmail" onChange={this.handleEmailChange} value={this.state.inputEmail}/>
-                            <small id="emailHelp" className="form-text text-muted">
-                                <div className="smtxt">Your e-mail is kept private. We don't sell your information.</div>
+                            <small>
+                                Your e-mail is kept private. We don't sell your information.
                             </small>
                         </div>
 
                         <div className="form-group inputfield">
                             <label htmlFor="inputPass">Password</label>
                             <input type="password" className="form-control" id="inputPass" onChange={this.handlePassChange} value={this.state.inputPass}/>
-                            <small id="passHelp" className="form-text text-muted">
-                                <div className="smtxt">Don't worry. We aren't storing your password in plaintext.</div>
+                            <small>
+                                Don't worry. We aren't storing your password in plaintext.
                             </small>
                         </div>
 

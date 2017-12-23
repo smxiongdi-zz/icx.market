@@ -1,9 +1,28 @@
 import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({ account:accountReducer });
+const settingsReducer = (state = [], action) => {
+    switch(action.type) {
+        case "THEMESETTINGS_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching
+            })
+        case "THEMESETTINGS_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching
+            })
+    }
+}
 
 const accountReducer = (state = [], action) => {
     switch(action.type) {
+        case "THEMESETTINGS_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching
+            })
+        case "THEMESETTINGS_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching
+            })
         case "NETWORK_REQUEST":
             return Object.assign({}, state, {
                 isFetching: action.isFetching
@@ -12,6 +31,7 @@ const accountReducer = (state = [], action) => {
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
                 uname: action.uname,
+                theme: action.theme,
                 message: action.message,
             })
         case "LOGIN_USER_SUCCESS":
@@ -76,5 +96,7 @@ const accountReducer = (state = [], action) => {
             return state
     }
 }
+
+const rootReducer = combineReducers({ account:accountReducer, settings: settingsReducer });
 
 export default accountReducer;

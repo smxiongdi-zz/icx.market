@@ -1,0 +1,130 @@
+html, body {
+  font-family: Bungee Hairline, cursive;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: coral;
+  font-weight: bold; }
+
+/*
+body:before{
+//    background-image:url("../static/img/taipei1920.jpg");
+//    background-size:100%;
+    display: block; content: ""; position: absolute; z-index: -1;
+    top: 0; left: 0; right: 0; height: 100%;
+    opacity: 0.6;
+}
+*/
+img {
+  opacity: 0.5; }
+
+.cond_content {
+  width: 80%;
+  margin: auto;
+  font-family: Bungee Hairline, cursive;
+  min-height: 100%;
+  margin-bottom: -150px; }
+
+.cond_content:after {
+  content: "";
+  display: block; }
+
+.footer, .cond_content:after {
+  height: 150px; }
+
+.footer {
+  bottom: 0;
+  left: 0;
+  color: #232323;
+  text-align: center;
+  border-top: 1px solid #232323;
+  font-family: Bungee Hairline, cursive; }
+
+* {
+  margin: 0; }
+
+.smtext {
+  font-family: Bungee Hairline, cursive; }
+
+/*
+body::after {
+    content: '';
+    display:block;
+    background-image:url("../static/img/taipei1920.jpg");
+    background-size:100% 100%;
+    opacity: 0.5;
+    z-index:-1;
+}
+*/
+.ptext {
+  border-radius: 25px;
+  height: auto;
+  padding: 2%;
+  font-weight: bold;
+  color: #232323; }
+
+.auth-page {
+  height: auto;
+  width: 40%;
+  margin: auto;
+  padding: 2%;
+  font-weight: bold;
+  color: #232323; }
+
+.auth-button {
+  padding-top: 5%; }
+
+.btn-text {
+  color: #232323;
+  background-color: #FCFCFC;
+  font-family: Bungee Hairline, cursive; }
+
+.error-message {
+  color: #F3308C; }
+
+.success-message {
+  color: #232323; }
+
+.footer-link a {
+  color: #232323; }
+
+.footer-link a:hover {
+  color: ghostwhite;
+  text-decoration: none; }
+
+.row-bordered:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin: 0 15px; }
+
+nav {
+  border-bottom: 1px solid #232323; }
+
+.nav-link a {
+  color: #232323;
+  font-size: 15px; }
+
+.nav-link a:hover {
+  text-decoration: none;
+  color: #e3e3e3; }
+
+.nav-link a:active {
+  text-decoration: none;
+  color: #e3e3e3; }
+
+.nav-link a:after {
+  text-decoration: none; }
+
+.color-title {
+  display: inline;
+  font-family: Bungee Hairline, cursive;
+  color: #232323; }
+
+.custom-toggler.navbar-toggler {
+  border-color: #232323; }
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(35,35,35, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
+
+/*# sourceMappingURL=light.css.map */

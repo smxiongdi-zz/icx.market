@@ -9,7 +9,7 @@ class Navbar extends React.Component {
                 Notifications: <li className='nav-item'><div className='nav-link'><NavLink exact activeClassName='active' to = {{pathname: '/notifications'}}>Notifications</NavLink></div></li>,
                 Login: <li className='nav-item'><div className='nav-link'><NavLink exact activeClassName='active' to = {{pathname: '/login'}}>login</NavLink></div></li>,
                 Register: <li className='nav-item'><div className='nav-link'><NavLink exact activeClassName='active' to = {{pathname: '/register'}}>Register</NavLink></div></li>,
-                Profile: <li className="nav-item"> <div className="nav-link"><NavLink exact activeClassName="active" to = {{pathname: '/p'}} >Profile</NavLink></div> </li>
+                Profile: <li className="nav-item"> <div className="nav-link"><NavLink exact activeClassName="active" to = {{pathname: '/dash'}} >Dashboard</NavLink></div> </li>
             }
             this.handleLogout = this.handleLogout.bind(this);
         }
@@ -28,9 +28,9 @@ class Navbar extends React.Component {
                     <button className="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-            <a className="navbar-brand" href="/">
+            <a className="navbar-brand">
                 <div className = "color-title">
-                    icx.market
+                    icx.market <small>BETA</small>
                 </div>
             </a>
                     <div className="collapse navbar-collapse" id="navbarNav">

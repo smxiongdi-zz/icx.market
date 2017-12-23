@@ -11,7 +11,7 @@ class Confirm extends React.Component {
     render() {
         return (
             <div className = "confirm_page">
-                <h1 className="display-4">{this.props.pageTitle}</h1>
+                <h4>{this.props.pageTitle}</h4>
                 <p>{this.props.verifyMessage}</p>
             </div>
         );

@@ -6,8 +6,9 @@ import App from './App.js';
 
 const mapStateToProps = state => {
     return({
-        username: state.username,
+        uname: state.uname,
         profile: state.profile,
+        theme: state.theme,
     })
 }
 

@@ -51,7 +51,7 @@ class Login extends React.Component {
     }
 
     redirectPage () {
-        setTimeout(() => this.props.history.push('/', 1000));
+        setTimeout(() => this.props.history.push('/', 3000));
     }
 
     render () {
@@ -59,8 +59,8 @@ class Login extends React.Component {
         let errMsg = <div className="error-message">{this.props.message}</div>;
         return (
             <div className="auth-page">
-            { this.props.uname ? this.redirectPage : '' }
-                <h2 className="display-4">{this.props.title}</h2>
+            { this.props.uname ? this.redirectPage() : '' }
+                <h4>{this.props.title}</h4>
                 <form>
                         <div className="form-group inputfield">
                             <label htmlFor="inputEmail">E-mail</label>

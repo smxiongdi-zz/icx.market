@@ -62,6 +62,7 @@ export const userSession = () => (dispatch) => {
                 type: "USER_SESSION_SUCCESS",
                 isFetching: false,
                 message: response.message,
+                theme: response.theme || "Dark",
                 uname: response.uname,
             });
         },
@@ -70,6 +71,7 @@ export const userSession = () => (dispatch) => {
                 type: "USER_SESSION_FAILURE",
                 isFetching: false,
                 message: "No logged-in user.",
+                theme: response.theme || "Dark",
             });
         }
     );

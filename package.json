@@ -14,6 +14,7 @@
     "email-verification": "^0.4.6",
     "express-recaptcha": "^3.0.0",
     "fetch": "^1.1.0",
+    "less": "^2.7.3",
     "materialize-css": "^1.0.0-alpha.2",
     "nodemailer": "^4.4.1",
     "normalizr": "^3.2.4",

@@ -5,112 +5,99 @@ $gw: ghostwhite;
 $bg: #E8E9E9;
 $navbg: #181A1B;
 
-.NemDirectApp {
+html, body {
     font-family: $font-stack;
-}
-
-html { height: 100%; }
-body {
-    min-height: 100%;
+    height: 100%;
     padding: 0;
     margin: 0;
-    position: relative;
     background-color:$navbg;
-//    background-color:$bg;
 }
 
 /*
-@media (max-width: 640px){
-    .cond_content {
-        background-image: url("../static/img/taipei640.jpg");
-            repeat:no-repeat;
-    }
-}
-
-@media (min-width:641px) and (max-width: 1280px){
-    .cond_content {
-        background:{
-            image: image-url("../static/img/taipei1280.jpg");
-            repeat:no-repeat;
-        }
-    }
-}
-
-@media (min-width: 1281px) and (max-width:1920px){
-    .cond_content {
-        background:{
-            image: image-url("../static/img/taipei1920.jpg");
-            repeat:no-repeat;
-        }
-    }
-}
-
-@media (min-width: 1921px){
-    .cond_content {
-        background:{
-            image: image-url("../static/img/taipei5184.jpg");
-            repeat:no-repeat;
-        }
-    }
+body:before{
+//    background-image:url("../static/img/taipei1920.jpg");
+//    background-size:100%;
+    display: block; content: ""; position: absolute; z-index: -1;
+    top: 0; left: 0; right: 0; height: 100%;
+    opacity: 0.6;
 }
 */
 
-body::after {
-    content: '';
-    display:block;
-    height:10%;
-}
+img { opacity: 0.5; }
 
-.ptext {
-    font-weight:bold;
-//    background-color: #f0f0f0;
-    background-color: $navbg;
-    color: $gw;
-    border-radius:25px;
-    height:auto;
-    width: 80%;
-    padding-bottom:10%;
-    padding-right:5%;
-    padding-left:5%;
-    padding-top:5%;
-}
-
-.auth-page {
-    font-weight:bold;
-    background-color: $navbg;
-    color: $gw;
-    border-radius:25px;
-    height:auto;
-    width: 80%;
-    padding:2%;
-}
-
-.smtext {
-    color: $gw;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 10%;
-    padding-top:5%;
-    padding-bottom:5%;
-//    background-color:$navbg;
-    color:$primary;
-    text-align:center;
+.wrapper {
 }
 
 .cond_content {
-//    min-height: calc(100vh - 70px);
-    padding: 5%;
-    height:100%;
-    background-image:url("../static/img/taipei1920.jpg");
-    background-size:100% 100%;
+    width:80%;
+    margin:auto;
+    font-family: $font-stack;
+    min-height: 100%;
+    margin-bottom: -150px;
 }
 
+.cond_content:after {
+    content: "";
+    display: block;
+}
+
+.footer, .cond_content:after{
+    height: 150px;
+}
+
+.footer {
+    bottom:0; left:0;
+    color: $gw;
+    text-align:center;
+    border-top: 1px solid $primary;
+    font-family: $font-stack;
+    background-color:$navbg;
+}
+
+* {
+    margin: 0;
+}
+
+
+/*
+body::after {
+    content: '';
+    display:block;
+    background-image:url("../static/img/taipei1920.jpg");
+    background-size:100% 100%;
+    opacity: 0.5;
+    z-index:-1;
+}
+*/
+
+
+.ptext {
+    border-radius:25px;
+    height:auto;
+    padding:2%;
+
+    font-weight:bold;
+
+    background-color: $navbg;
+    color: $gw;
+}
+
+.auth-page {
+    height:auto;
+    width:40%;
+    margin:auto;
+//    border-radius:25px;
+
+    padding:2%;
+
+    font-weight:bold;
+
+//    background-color: $navbg;
+    color: $gw;
+}
+
+
 .auth-button { padding-top:5%; }
-.auth-page { padding-right: 25%; padding-left: 25%; }
 
 .btn-text {
     color: $primary;
@@ -124,7 +111,7 @@ body::after {
 .footer-link a:hover { color: $gw; text-decoration: none; }
 
 .nav_scope {
-//    background-color: $navbg;
+    background-color: $navbg;
 }
 
 .row-bordered:after { content: ""; display: block; border-bottom:1px solid #ccc; margin: 0 15px; }
@@ -141,14 +128,9 @@ nav { border-bottom: 1px solid #1FC4C8; }
 
 .color-title {
     display: inline;
-    font-family: "Bungee Hairline", cursive;
+    font-family: $font-stack;
     color: $primary;
 }
-
-.t1 { color: #F6A704; }
-.t2 { color: #59B3E8; }
-.t3 { color: #00C9B4; }
-.tdot { color: white; }
 
 .custom-toggler.navbar-toggler {
     //border-color: #9A62D6;
