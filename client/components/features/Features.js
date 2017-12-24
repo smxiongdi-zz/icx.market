@@ -12,10 +12,10 @@ class Features extends React.Component {
                 <h1 className="display-4">{this.props.pageTitle}</h1>
                 <ul>
                     <li>
-                        Community search features
+                        <strike>Community search features</strike>
                     </li>
                     <li>
-                        Profile editing with features such as location
+                        <strike>Profile editing with features such as location</strike>
                     </li>
                     <li>
                         Advertising features for buying/selling

@@ -4,7 +4,7 @@ import Edit from './Edit.js';
 
 const mapStateToProps = state => {
     return ({
-        pageTitle: state.pageTitle || 'Edit icx.market',
+        uname: state.uname,
     })
 }
 

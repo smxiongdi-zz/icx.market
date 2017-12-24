@@ -11,7 +11,9 @@ class Edit extends React.Component {
         }
     }
 
-    componentDidMount() { }
+    componentDidMount() {
+        !this.state.uname ? this.props.history.push("/login") : ''
+    }
 
     render() {
         return (

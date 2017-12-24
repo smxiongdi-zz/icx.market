@@ -28,7 +28,7 @@ class Footer extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-md-4 footer-link">terms | policy</div>
-                    <div className="col-md-4 footer-link"><NavLink to = {{pathname: '/community'}}>Community</NavLink></div>
+                    <div className="col-md-4 footer-link"><NavLink to = {{pathname: '/search'}}>search userbase</NavLink></div>
                     <div className="col-md-4">
                         <select className="smtext" onChange={this.setTheme}>
                             <option selected>Theme selection</option>

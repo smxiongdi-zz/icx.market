@@ -49,15 +49,17 @@ class App extends React.Component {
             this.setState({profileLoaded: true});
         });
 
+        /*
         this.props.fetchICXInfo().then(() => {
             this.setState({ICXInfoLoaded: true});
         });
+        */
     }
 
     componentWillMount() {}
 
     render() {
-        if(!this.state.cssLoaded || !this.state.profileLoaded || !this.state.ICXInfoLoaded) {
+        if(!this.state.cssLoaded || !this.state.profileLoaded) {
             return (
                 <div className = "load_wrapper">
                     <div className = "loading" />
@@ -72,7 +74,7 @@ class App extends React.Component {
                             <div className = "wrapper">
                             <div className = "cond_content">
                                 <Switch>
-                                    <Route exact path = "/" component = { DashContainer } />
+                                    <Route exact path = "/" component = { SearchContainer } />
                                     <Route exact path = "/dash" component = { DashContainer } />
                                     <Route exact path = "/about" component = { AboutContainer } />
                                     <Route exact path = "/features" component = { FeaturesContainer } />

@@ -18,8 +18,7 @@ class Dash extends React.Component {
 
     componentDidMount() {
         !this.props.uname ?  this.props.history.push("/login") : ''
-        !this.props.profile ? this.props.history.push("/edit") : ''
-
+        !this.props.profile && this.props.uname ? this.props.history.push("/edit") : ''
 
         if(this.props.profile) {
             this.props.profile.profile_name ?  this.setState({profileName: <p>name: {this.props.profile.profile_name}</p>}) : ''

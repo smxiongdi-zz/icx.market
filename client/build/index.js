@@ -5242,9 +5242,11 @@ var App = function (_React$Component) {
                 _this2.setState({ profileLoaded: true });
             });
 
-            this.props.fetchICXInfo().then(function () {
-                _this2.setState({ ICXInfoLoaded: true });
+            /*
+            this.props.fetchICXInfo().then(() => {
+                this.setState({ICXInfoLoaded: true});
             });
+            */
         }
     }, {
         key: 'componentWillMount',
@@ -5252,7 +5254,7 @@ var App = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            if (!this.state.cssLoaded || !this.state.profileLoaded || !this.state.ICXInfoLoaded) {
+            if (!this.state.cssLoaded || !this.state.profileLoaded) {
                 return _react2.default.createElement(
                     'div',
                     { className: 'load_wrapper' },
@@ -5278,7 +5280,7 @@ var App = function (_React$Component) {
                                     _react2.default.createElement(
                                         _reactRouterDom.Switch,
                                         null,
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _DashContainer2.default }),
+                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchContainer2.default }),
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dash', component: _DashContainer2.default }),
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _AboutContainer2.default }),
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/features', component: _FeaturesContainer2.default }),
@@ -27056,8 +27058,8 @@ var Footer = function (_React$Component) {
                         { className: 'col-md-4 footer-link' },
                         _react2.default.createElement(
                             _reactRouterDom.NavLink,
-                            { to: { pathname: '/community' } },
-                            'Community'
+                            { to: { pathname: '/search' } },
+                            'search userbase'
                         )
                     ),
                     _react2.default.createElement(
@@ -27714,7 +27716,7 @@ var Dash = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             !this.props.uname ? this.props.history.push("/login") : '';
-            !this.props.profile ? this.props.history.push("/edit") : '';
+            !this.props.profile && this.props.uname ? this.props.history.push("/edit") : '';
 
             if (this.props.profile) {
                 this.props.profile.profile_name ? this.setState({ profileName: _react2.default.createElement(
@@ -27967,12 +27969,20 @@ var Features = function (_React$Component) {
                     _react2.default.createElement(
                         'li',
                         null,
-                        'Community search features'
+                        _react2.default.createElement(
+                            'strike',
+                            null,
+                            'Community search features'
+                        )
                     ),
                     _react2.default.createElement(
                         'li',
                         null,
-                        'Profile editing with features such as location'
+                        _react2.default.createElement(
+                            'strike',
+                            null,
+                            'Profile editing with features such as location'
+                        )
                     ),
                     _react2.default.createElement(
                         'li',
@@ -28784,7 +28794,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        pageTitle: state.pageTitle || 'Edit icx.market'
+        uname: state.uname
     };
 };
 
@@ -28838,7 +28848,9 @@ var Edit = function (_React$Component) {
 
     _createClass(Edit, [{
         key: 'componentDidMount',
-        value: function componentDidMount() {}
+        value: function componentDidMount() {
+            !this.state.uname ? this.props.history.push("/login") : '';
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -29416,7 +29428,7 @@ exports = module.exports = __webpack_require__(36)(undefined);
 
 
 // module
-exports.push([module.i, "@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes pulse {\n  50% {\n    background: white; } }\n\nhtml, .load_wrapper {\n  height: 100%; }\n\n.load_wrapper {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background: #333333; }\n\n.loading {\n  border-radius: 50%;\n  width: 24px;\n  height: 24px;\n  border: 0.25rem solid rgba(255, 255, 255, 0.2);\n  border-top-color: white;\n  animation: spin 1s infinite linear; }\n  .loading--double {\n    border-style: double;\n    border-width: .5rem; }\n\n.loading-pulse {\n  position: relative;\n  width: 6px;\n  height: 24px;\n  background: rgba(255, 255, 255, 0.2);\n  animation: pulse 750ms infinite;\n  animation-delay: 250ms; }\n  .loading-pulse:before, .loading-pulse:after {\n    content: '';\n    position: absolute;\n    display: block;\n    height: 16px;\n    width: 6px;\n    background: rgba(255, 255, 255, 0.2);\n    top: 50%;\n    transform: translateY(-50%);\n    animation: pulse 750ms infinite; }\n  .loading-pulse:before {\n    left: -12px; }\n  .loading-pulse:after {\n    left: 12px;\n    animation-delay: 500ms; }\n", ""]);
+exports.push([module.i, "@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes pulse {\n  50% {\n    background: white; } }\n\nhtml, .load_wrapper {\n  height: 100%; }\n\n.load_wrapper {\n  display: flex;\n  justify-content: space-around;\n  align-items: center; }\n\n.loading {\n  border-radius: 50%;\n  width: 24px;\n  height: 24px;\n  border: 0.25rem solid rgba(255, 255, 255, 0.2);\n  border-top-color: white;\n  animation: spin 1s infinite linear; }\n  .loading--double {\n    border-style: double;\n    border-width: .5rem; }\n\n.loading-pulse {\n  position: relative;\n  width: 6px;\n  height: 24px;\n  background: rgba(255, 255, 255, 0.2);\n  animation: pulse 750ms infinite;\n  animation-delay: 250ms; }\n  .loading-pulse:before, .loading-pulse:after {\n    content: '';\n    position: absolute;\n    display: block;\n    height: 16px;\n    width: 6px;\n    background: rgba(255, 255, 255, 0.2);\n    top: 50%;\n    transform: translateY(-50%);\n    animation: pulse 750ms infinite; }\n  .loading-pulse:before {\n    left: -12px; }\n  .loading-pulse:after {\n    left: 12px;\n    animation-delay: 500ms; }\n", ""]);
 
 // exports
 
