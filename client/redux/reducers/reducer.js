@@ -16,6 +16,20 @@ const settingsReducer = (state = [], action) => {
 const accountReducer = (state = [], action) => {
     switch(action.type) {
 
+        // SEARCH API
+        case "SEARCH_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                results: action.results,
+            })
+
+        // ICX coinmarketcap API
+        case "ICXPRICE_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                ICX: action.ICX,
+            })
+
         // SETTINGS SUCCESSES
         case "THEMESETTINGS_SUCCESS":
             return Object.assign({}, state, {
@@ -82,6 +96,20 @@ const accountReducer = (state = [], action) => {
                 recap: action.recap,
             })
 
+        // SEARCH FAILURE
+        case "SEARCH_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                results: action.results,
+            })
+
+        // ICX coinmarketcap FAILURES
+        case "ICXPRICE_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+            })
 
         // ACCOUNT FAILURES
         case "LOGIN_USER_FAILURE":

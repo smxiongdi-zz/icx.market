@@ -27,11 +27,7 @@ class Edit extends React.Component {
     }
 
     componentDidMount() {
-        this.props.profile !== undefined ?
-            this.setState({profile: this.props.profile}) :
-            this.props.fetchProfile().then(() => {
-                this.setState({profile: this.props.profile});
-            })
+        this.props.profile !== undefined ?  this.setState({profile: this.props.profile}) : ''
     }
 
     componentWillMount() {

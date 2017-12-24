@@ -9,6 +9,18 @@ var nev = require('email-verification')(require('mongoose'));
 
 const nodemailer = require('nodemailer');
 
+router.post('/search', ((req, res) => {
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
+    var Profile = require('/home/zach/icx.market/server/models/profile.js');
+
+    var search_results = Profile.find({ "uname": { "$ne": req.session.uname }});
+
+    search_results.then((x, err) => {
+        res.send({results: x});
+    });
+
+}));
+
 // get_profile api endpoint
 router.post('/my_profile', ((req, res) => {
     var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
@@ -54,9 +66,29 @@ router.post('/theme', ((req, res) => {
 router.post('/session', ((req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-    req.session.uname ?
-        res.send({error: 0, uname:req.session.uname, message: "User authenticated", theme: req.session.theme}) :
+    if(req.session.uname) {
+        var Profile = require('/home/zach/icx.market/server/models/profile.js');
+        var userProfile = Profile.find({uname: req.session.uname}).limit(1);
+        userProfile.then((x, err) => {
+            x.length > 0 ?
+                editProfile(x[0]) :
+                res.send({error: 0, uname:req.session.uname, message: "User authenticated", theme: req.session.theme});
+        })
+        res.send({error: 0, uname:req.session.uname, message: "User authenticated", theme: req.session.theme});
+    } else {
         res.send({error: 1, message:"User not logged in", theme: req.session.theme});
+    }
+
+
+    // update the last online attr
+    function editProfile(editedProfile) {
+        editedProfile.last_online = Date.now();
+
+        editedProfile.save();
+
+        res.send({error: 0, uname:req.session.uname, message: "User authenticated", theme: req.session.theme});
+    }
+
 }));
 
 // login API endpoint

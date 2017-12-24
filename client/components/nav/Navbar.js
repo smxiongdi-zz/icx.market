@@ -36,7 +36,7 @@ class Navbar extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <div className="nav-link" href="#"><NavLink exact activeClassName="active" to = {{pathname: '/c'}} >Community</NavLink></div>
+                                <div className="nav-link" href="#"><NavLink exact activeClassName="active" to = {{pathname: '/search'}} >Search</NavLink></div>
                             </li>
                             { this.props.uname ? this.state.Profile : '' }
                         </ul>

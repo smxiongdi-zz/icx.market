@@ -18,25 +18,16 @@ class Dash extends React.Component {
 
     componentDidMount() {
         !this.props.uname ?  this.props.history.push("/login") : ''
+        !this.props.profile ? this.props.history.push("/edit") : ''
 
-        if(!this.props.profile) {
-            this.props.fetchProfile().then(() => {
-                this.props.profile.profile_name ?  this.setState({profileName: <p>name: {this.props.profile.profile_name}</p>}) : ''
 
-                this.props.profile.location ? this.setState({profileLocation: <p>location: {this.props.profile.location}</p>}) : ''
-
-                this.props.profile.about_me ? this.setState({profileAboutMe: <p>about: {this.props.profile.about_me}</p>}) : ''
-            })
-        } else {
-
+        if(this.props.profile) {
             this.props.profile.profile_name ?  this.setState({profileName: <p>name: {this.props.profile.profile_name}</p>}) : ''
 
             this.props.profile.location ? this.setState({profileLocation: <p>location: {this.props.profile.location}</p>}) : ''
 
             this.props.profile.about_me ? this.setState({profileAboutMe: <p>about: {this.props.profile.about_me}</p>}) : ''
-
         }
-
 
     }
 

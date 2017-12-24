@@ -17,6 +17,7 @@ import LogoutContainer from './components/account/logout/LogoutContainer.js';
 import RegisterContainer from './components/account/register/RegisterContainer.js';
 import ConfirmContainer from './components/account/confirm_account/ConfirmContainer.js';
 import EditContainer from './components/edit_profile/EditContainer.js';
+import SearchContainer from './components/search/SearchContainer.js';
 
 
 class App extends React.Component {
@@ -25,12 +26,16 @@ class App extends React.Component {
         super();
 
         this.state = {
-            cssLoaded: false
+            cssLoaded: false,
+            profileLoaded: false,
+            ICXInfoLoaded: false,
         }
     }
 
     componentDidMount() {
         // onload actions
+        require('./static/css/loader.css');
+
         this.props.fetchSession().then(() => {
             if(this.props.theme === 'Light') {
                 require('./static/css/light.css');
@@ -40,14 +45,24 @@ class App extends React.Component {
             this.setState({cssLoaded:true});
         });
 
-        this.props.fetchProfile();
+        this.props.fetchProfile().then(() => {
+            this.setState({profileLoaded: true});
+        });
+
+        this.props.fetchICXInfo().then(() => {
+            this.setState({ICXInfoLoaded: true});
+        });
     }
 
     componentWillMount() {}
 
     render() {
-        if(!this.state.cssLoaded) {
-            return <div />
+        if(!this.state.cssLoaded || !this.state.profileLoaded || !this.state.ICXInfoLoaded) {
+            return (
+                <div className = "load_wrapper">
+                    <div className = "loading" />
+                </div>
+            );
         } else {
             return (
                 <div className = "NemDirectApp">
@@ -65,6 +80,7 @@ class App extends React.Component {
                                     <Route exact path = "/logout" component = { LogoutContainer } />
                                     <Route exact path = "/register" component = { RegisterContainer } />
                                     <Route exact path = "/edit" component = { EditContainer } />
+                                    <Route exact path = "/search" component = { SearchContainer } />
                                     <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                                 </Switch>
                             </div>
