@@ -75,6 +75,9 @@ body::after {
 .auth-button {
   padding-top: 5%; }
 
+.edit-msg {
+  padding-top: 5%; }
+
 .btn-text {
   color: #1FC4C8;
   background-color: #181A1B;

@@ -9,6 +9,40 @@ var nev = require('email-verification')(require('mongoose'));
 
 const nodemailer = require('nodemailer');
 
+// get_profile api endpoint
+router.post('/my_profile', ((req, res) => {
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
+    var Profile = require('/home/zach/icx.market/server/models/profile.js');
+    var userProfile = Profile.find({uname: req.session.uname}).limit(1);
+    userProfile.then((x, err) => res.send({profile: x[0]}));
+}))
+
+// edit_profile api endpoint
+router.post('/edit_profile', ((req, res) => {
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
+    var Profile = require('/home/zach/icx.market/server/models/profile.js');
+    var userProfile = Profile.find({uname: req.session.uname}).limit(1);
+
+    userProfile.then((x, err) => {
+        x.length > 0 ?
+            editProfile(x[0]) :
+            editProfile(new Profile({}))
+    })
+
+    function editProfile(editedProfile) {
+        editedProfile.uname = req.session.uname ? req.session.uname : editedProfile.uname;
+        editedProfile.profile_name = req.body.profile_name ? req.body.profile_name : editedProfile.profile_name;
+        editedProfile.location = req.body.location ? req.body.location : editedProfile.location;
+        editedProfile.about_me = req.body.about_me ? req.body.about_me : editedProfile.about_me;
+        editedProfile.last_online = Date.now();
+
+        editedProfile.save();
+
+        res.send({message: "profile updated", error: 0});
+    }
+
+}));
+
 // theme api endpoint
 router.post('/theme', ((req, res) => {
     req.session.theme = req.body.theme;
@@ -123,6 +157,7 @@ router.post('/register', ((req, res) => {
 
 }));
 
+// siteverify API endpoint
 router.post('/siteverify', ((req, res) => {
 
     var captchaURL = "https://www.google.com/recaptcha/api/siteverify?secret="+process.env.CAPTCHA_SECRET+"&response="+req.body.recaptcha+"&remoteip="+req.connection.remoteAddress;

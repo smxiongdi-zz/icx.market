@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 var profileSchema = mongoose.Schema({
     uname: String,
-    name: String,
+    profile_name: String,
     lang_pref: String,
-    loc: String,
+    location: String,
     about_me: String,
     last_online: Date,
 });

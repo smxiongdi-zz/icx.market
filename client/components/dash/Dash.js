@@ -7,28 +7,51 @@ class Dash extends React.Component {
         super();
 
         this.state = {
-            noProfile: <div><p>user profile does not exist</p><p><NavLink to = {{ pathname: "/edit" }}>Click here to get started.</NavLink></p></div>,
-            profileDisplay: <p>Profile details go here</p>,
+            noProfile: <div><p>user profile does not exist</p><div className="footer-link"><NavLink to = {{ pathname: "/edit" }}>Click here to get started.</NavLink></div></div>,
+
+            profileName: "",
+            profileLocation: "",
+            profileAboutMe: "",
+            editProfile: <div className="footer-link"><NavLink to = {{ pathname: "/edit" }}>Edit profile</NavLink></div>,
         }
     }
 
     componentDidMount() {
-        !this.props.uname ?
-            this.props.history.push("/login") :
-            '';
+        !this.props.uname ?  this.props.history.push("/login") : ''
+
+        if(!this.props.profile) {
+            this.props.fetchProfile().then(() => {
+                this.props.profile.profile_name ?  this.setState({profileName: <p>name: {this.props.profile.profile_name}</p>}) : ''
+
+                this.props.profile.location ? this.setState({profileLocation: <p>location: {this.props.profile.location}</p>}) : ''
+
+                this.props.profile.about_me ? this.setState({profileAboutMe: <p>about: {this.props.profile.about_me}</p>}) : ''
+            })
+        } else {
+
+            this.props.profile.profile_name ?  this.setState({profileName: <p>name: {this.props.profile.profile_name}</p>}) : ''
+
+            this.props.profile.location ? this.setState({profileLocation: <p>location: {this.props.profile.location}</p>}) : ''
+
+            this.props.profile.about_me ? this.setState({profileAboutMe: <p>about: {this.props.profile.about_me}</p>}) : ''
+
+        }
+
+
     }
 
     render() {
+
         return (
             <div className = "ptext">
                 <h3>{this.props.pageTitle}</h3>
                 <p>user account: {this.props.uname}</p>
 
-                {
-                    !this.props.profile ?
-                        this.state.noProfile :
-                        this.state.profileDisplay
-                }
+                { this.state.profileName }
+                { this.state.profileLocation }
+                { this.state.profileAboutMe }
+                { this.state.editProfile }
+
             </div>
         );
     }

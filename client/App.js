@@ -16,12 +16,17 @@ import LoginContainer from './components/account/login/LoginContainer.js';
 import LogoutContainer from './components/account/logout/LogoutContainer.js';
 import RegisterContainer from './components/account/register/RegisterContainer.js';
 import ConfirmContainer from './components/account/confirm_account/ConfirmContainer.js';
+import EditContainer from './components/edit_profile/EditContainer.js';
 
 
 class App extends React.Component {
 
     constructor() {
-        super()
+        super();
+
+        this.state = {
+            cssLoaded: false
+        }
     }
 
     componentDidMount() {
@@ -32,36 +37,44 @@ class App extends React.Component {
             } else if(this.props.theme === 'Dark') {
                 require('./static/css/dark.css');
             }
+            this.setState({cssLoaded:true});
         });
+
+        this.props.fetchProfile();
     }
 
     componentWillMount() {}
 
     render() {
-        return (
-            <div className = "NemDirectApp">
-                <Router>
-                    <div>
-                        <NavbarContainer />
-                        <div className = "wrapper">
-                        <div className = "cond_content">
-                            <Switch>
-                                <Route exact path = "/" component = { DashContainer } />
-                                <Route exact path = "/dash" component = { DashContainer } />
-                                <Route exact path = "/about" component = { AboutContainer } />
-                                <Route exact path = "/features" component = { FeaturesContainer } />
-                                <Route exact path = "/login" component = { LoginContainer } />
-                                <Route exact path = "/logout" component = { LogoutContainer } />
-                                <Route exact path = "/register" component = { RegisterContainer } />
-                                <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
-                            </Switch>
+        if(!this.state.cssLoaded) {
+            return <div />
+        } else {
+            return (
+                <div className = "NemDirectApp">
+                    <Router>
+                        <div>
+                            <NavbarContainer />
+                            <div className = "wrapper">
+                            <div className = "cond_content">
+                                <Switch>
+                                    <Route exact path = "/" component = { DashContainer } />
+                                    <Route exact path = "/dash" component = { DashContainer } />
+                                    <Route exact path = "/about" component = { AboutContainer } />
+                                    <Route exact path = "/features" component = { FeaturesContainer } />
+                                    <Route exact path = "/login" component = { LoginContainer } />
+                                    <Route exact path = "/logout" component = { LogoutContainer } />
+                                    <Route exact path = "/register" component = { RegisterContainer } />
+                                    <Route exact path = "/edit" component = { EditContainer } />
+                                    <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
+                                </Switch>
+                            </div>
+                            </div>
+                            <Footer />
                         </div>
-                        </div>
-                        <Footer />
-                    </div>
-                </Router>
-            </div>
-        );
+                    </Router>
+                </div>
+            );
+        }
     };
 }
 

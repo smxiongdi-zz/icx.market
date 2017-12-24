@@ -15,18 +15,32 @@ const settingsReducer = (state = [], action) => {
 
 const accountReducer = (state = [], action) => {
     switch(action.type) {
+
+        // SETTINGS SUCCESSES
         case "THEMESETTINGS_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching
             })
-        case "THEMESETTINGS_FAILURE":
+        case "EDITPROFILE_SUCCESS":
             return Object.assign({}, state, {
-                isFetching: action.isFetching
+                isFetching: action.isFetching,
+                message: action.message,
             })
+        case "MYPROFILE_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                profile: action.profile,
+            })
+
+
+
+        // NETWORK REQUEST
         case "NETWORK_REQUEST":
             return Object.assign({}, state, {
                 isFetching: action.isFetching
             })
+
+        // ACCOUNTS SUCCESSES
         case "USER_SESSION_SUCCESS":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
@@ -67,6 +81,9 @@ const accountReducer = (state = [], action) => {
                 error: action.error,
                 recap: action.recap,
             })
+
+
+        // ACCOUNT FAILURES
         case "LOGIN_USER_FAILURE":
             return Object.assign({}, state, {
                 isFetching: action.isFetching,
@@ -91,6 +108,24 @@ const accountReducer = (state = [], action) => {
                 message: action.message,
                 error: action.error,
                 recap: action.recap,
+            })
+
+        // SETTINGS/EDIT FAILURES
+        case "THEMESETTINGS_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching
+            })
+        case "EDITPROFILE_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
+            })
+        case "MYPROFILE_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
+                error: action.error,
             })
         default:
             return state
