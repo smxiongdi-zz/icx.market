@@ -1,4 +1,4 @@
-### nem.direct
+### icx.market
 enable nem purchases between individuals; forhires, advertisements, fiat <-> nem exchanges, etc
 
 frontend objectives
