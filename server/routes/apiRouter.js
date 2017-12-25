@@ -22,12 +22,20 @@ router.post('/search', ((req, res) => {
 }));
 
 // get_profile api endpoint
+router.post('/get_profile', ((req, res) => {
+    var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
+    var Profile = require('/home/zach/icx.market/server/models/profile.js');
+    var userProfile = Profile.find({_id: req.body.uid}).limit(1);
+    userProfile.then((x, err) => res.send({userProfile: x[0]}));
+}));
+
+// my_profile api endpoint
 router.post('/my_profile', ((req, res) => {
     var db = require('/home/zach/icx.market/server/db/accounts_connec.js');
     var Profile = require('/home/zach/icx.market/server/models/profile.js');
     var userProfile = Profile.find({uname: req.session.uname}).limit(1);
     userProfile.then((x, err) => res.send({profile: x[0]}));
-}))
+}));
 
 // edit_profile api endpoint
 router.post('/edit_profile', ((req, res) => {

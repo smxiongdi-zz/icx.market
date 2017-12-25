@@ -12,7 +12,7 @@ class Edit extends React.Component {
     }
 
     componentDidMount() {
-        !this.state.uname ? this.props.history.push("/login") : ''
+        !this.props.uname ? this.props.history.push("/login") : ''
     }
 
     render() {

@@ -16,6 +16,13 @@ const settingsReducer = (state = [], action) => {
 const accountReducer = (state = [], action) => {
     switch(action.type) {
 
+        // GETPROFILE API
+        case "PROFILE_SUCCESS":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                userProfile: action.userProfile,
+            })
+
         // SEARCH API
         case "SEARCH_SUCCESS":
             return Object.assign({}, state, {
@@ -154,6 +161,11 @@ const accountReducer = (state = [], action) => {
                 isFetching: action.isFetching,
                 message: action.message,
                 error: action.error,
+            })
+        case "PROFILE_FAILURE":
+            return Object.assign({}, state, {
+                isFetching: action.isFetching,
+                message: action.message,
             })
         default:
             return state

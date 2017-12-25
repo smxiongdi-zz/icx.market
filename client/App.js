@@ -18,6 +18,7 @@ import RegisterContainer from './components/account/register/RegisterContainer.j
 import ConfirmContainer from './components/account/confirm_account/ConfirmContainer.js';
 import EditContainer from './components/edit_profile/EditContainer.js';
 import SearchContainer from './components/search/SearchContainer.js';
+import ProfileContainer from './components/profile/ProfileContainer.js';
 
 
 class App extends React.Component {
@@ -83,6 +84,7 @@ class App extends React.Component {
                                     <Route exact path = "/register" component = { RegisterContainer } />
                                     <Route exact path = "/edit" component = { EditContainer } />
                                     <Route exact path = "/search" component = { SearchContainer } />
+                                    <Route exact path = "/profile/:uid" component = { ProfileContainer } />
                                     <Route path = "/confirm/:user_id" component = { ConfirmContainer } />
                                 </Switch>
                             </div>
